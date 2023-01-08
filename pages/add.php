@@ -12,10 +12,19 @@
     <body>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php"; ?>
         <div id="main_container">
-            <input type="text" placeholder="Question" id="question_input">
-            <input type="text" placeholder="Client" id="client_input">
-            <input type="text" placeholder="Year" id="client_input">
-            <textarea placeholder="answer" id="answer_input" rows="5" cols="50"></textarea>
+            <input type="text" placeholder="Question" id="question_input" disabled=false>
+            <input type="text" placeholder="Client" id="client_input" disabled=false>
+            <input type="text" placeholder="Year" id="year_input" disabled=false>
+            <textarea placeholder="Answer" id="answer_input" rows="5" cols="50" disabled=false></textarea>
+            <input type="text" placeholder="Tag" id="tag_input" disabled=false onkeyup="getTags()">
+            <div id="tag_button_container"></div>
+            <div id="added_tag_button_container"></div>
+            <input type="hidden" id="tag_list">
+            <textarea placeholder="Additional Notes" id="additional_notes_input" rows="5" cols="50" disabled=false></textarea>
+            <button type="button" onclick="uploadInfo()">Submit</button>
+            <p id="error"></p>
         </div>
     </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/pages/js/add.js"></script>
 </html>

@@ -20,9 +20,9 @@
     $stmt->fetch();
     $stmt->close();
     if ($result) {
-        echo ($result);
         error("A tag with that name already exists");
     }
+    unset($result);
     
     //Add tag to database
     $stmt = $conn->prepare("INSERT INTO tags(tag) VALUES (?)");

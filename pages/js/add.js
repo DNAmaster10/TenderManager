@@ -74,3 +74,9 @@ function getTags() {
         }
     });
 }
+document.getElementById("question_input").disabled = false;
+document.getElementById("client_input").disabled = false;
+document.getElementById("year_input").disabled = false;
+document.getElementById("answer_input").disabled = false;
+document.getElementById("tag_input").disabled = false;
+document.getElementById("additional_notes_input").disabled = false;

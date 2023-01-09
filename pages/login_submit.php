@@ -32,11 +32,6 @@
     $_SESSION["username"] = $_POST["username"];
     $_SESSION["password"] = $hashed_password;
 
-    if (isset($_POST["remember"])) {
-        $_COOKIE["username"] = $_POST["username"];
-        $_COOKIE["password"] = $_POST["password"];
-    }
-
     header ("Location: /pages/home.php");
 ?>
 <!DOCTYPE html>

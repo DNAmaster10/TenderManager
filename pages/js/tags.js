@@ -7,7 +7,7 @@ function getTags() {
             console.log("GetTags: " + data)
             if (!data == "null") {
                 var tagArray = data.split("#-#");
-                console.log("tagArray");
+                console.log(tagArray);
                 for (var i = 0; i < tagArray.length; i++) {
                     console.log("test");
                     var element = `

@@ -12,7 +12,7 @@
         $stmt = $conn->prepare("SELECT tag FROM tags WHERE tag LIKE ?");
         $stmt->bind_param("s", $like_operator);
         $stmt->execute();
-        $stmt->get_result();
+        $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
             $final_string = $final_string.$row["tag"]."#-#";
         }

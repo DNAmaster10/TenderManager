@@ -20,6 +20,7 @@
     $stmt->fetch();
     $stmt->close();
     if ($result && strlen($result) > 0) {
+        echo ($result);
         error("A tag with that name already exists");
     }
     

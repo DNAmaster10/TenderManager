@@ -41,6 +41,7 @@ function addTag() {
             type: "POST",
             data: {tag_name:tagName},
             success: function(data) {
+                console.log(data);
                 if (!data == "success") {
                     data.split(":")
                     document.getElementById("error").innerHTML = data[1];

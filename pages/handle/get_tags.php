@@ -6,10 +6,11 @@
         echo ("none");
     }
     else {
+        $like_operator = "%".$_GET["tag"]."%";
         $final_string = "";
         $input_tag = $_GET["tag"];
-        $stmt = $conn->prepare("SELECT tag FROM tags WHERE tag LIKE '?%'");
-        $stmt->bind_param("s", $input_tag);
+        $stmt = $conn->prepare("SELECT tag FROM tags WHERE tag LIKE ?");
+        $stmt->bind_param("s", $like_operator);
         $stmt->execute();
         $stmt->get_result();
         while ($row = $result->fetch_assoc()) {

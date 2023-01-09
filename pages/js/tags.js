@@ -4,6 +4,7 @@ function getTags() {
         url: "/pages/handle/get_all_tags.php",
         type: "GET",
         success: function (data) {
+            console.log("GetTags: " + data)
             if (!data == "null") {
                 var tagArray = data.split("#-#");
                 for (var i = 0; i < tagArray.length; i++) {

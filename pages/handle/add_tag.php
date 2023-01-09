@@ -19,7 +19,7 @@
     $stmt->bind_result($result);
     $stmt->fetch();
     $stmt->close();
-    if ($result) {
+    if ($result && mysqli_num_rows($result) > 0) {
         error("A tag with that name already exists");
     }
     

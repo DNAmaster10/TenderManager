@@ -3,7 +3,7 @@
     include $_SERVER["DOCUMENT_ROOT"]."/includes/dbh.php";
 
     if (!isset($_GET["tag"]) || $_GET["tag"] == "") {
-        echo ("none");
+        echo ("null");
     }
     else {
         $like_operator = "%".$_GET["tag"]."%";

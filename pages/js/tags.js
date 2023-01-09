@@ -9,14 +9,16 @@ function getTags() {
                 var tagArray = data.split("#-#");
                 console.log(tagArray);
                 for (var i = 0; i < tagArray.length; i++) {
-                    console.log("test");
-                    var element = `
-                    <div id="` + tagArray[i] + `_tag_container" class="tag_container">
-                        <p id="` + tagArray[i] + `_tag" class="tag_text"></p>
-                    </div>
-                    `;
-                    var rootElement = document.getElementById("tag_list_container");
-                    rootElement.innerHTML += element;
+                    if (!(tagArray[i] == "")) {
+                        console.log("test");
+                        var element = `
+                        <div id="` + tagArray[i] + `_tag_container" class="tag_container">
+                            <p id="` + tagArray[i] + `_tag" class="tag_text"></p>
+                        </div>
+                        `;
+                        var rootElement = document.getElementById("tag_list_container");
+                        rootElement.innerHTML += element;
+                    }
                 }
             }
         }

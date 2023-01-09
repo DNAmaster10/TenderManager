@@ -19,7 +19,7 @@
     $stmt->bind_result($result);
     $stmt->fetch();
     $stmt->close();
-    if ($result && strlen($result) > 0) {
+    if ($result) {
         echo ($result);
         error("A tag with that name already exists");
     }

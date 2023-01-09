@@ -22,4 +22,5 @@
         header ("Location: /pages/error.php");
         die();
     }
+    unset ($result);
 ?>

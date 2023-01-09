@@ -59,4 +59,4 @@
         $stmt->execute();
         $stmt->close();
     }
-    echo ("success:Successfully submited to database");
+    echo ("success:Successfully submitted to database");

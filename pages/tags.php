@@ -8,6 +8,7 @@
     <head>
         <title>Tags</title>
         <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/tags.css">
     </head>
     <body>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php"; ?>
@@ -16,6 +17,7 @@
             <p>Tag naming should be consistent. Once a tag has been created, it cannot be removed. If the name of a tag needs to be changed, or a tag need to be deleted, please ask an administrator to do what it is you need doing.</p>
             <input type="text" id="tag_name_input">
             <button type="button" id="tag_name_submit" onclick="addTag()">Add tag</button>
+            <p id="error"></p>
             <div id="tag_list_container"></div>
         </div>
     </body>

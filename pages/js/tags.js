@@ -1,5 +1,6 @@
 function getTags() {
     //Gets all tags from database and puts them onto tags page 
+    document.getElementById("tag_list_container").innerHTML = "";
     $.ajax({
         url: "/pages/handle/get_all_tags.php",
         type: "GET",

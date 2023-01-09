@@ -8,6 +8,7 @@ function getTags() {
             if (!data == "null") {
                 var tagArray = data.split("#-#");
                 for (var i = 0; i < tagArray.length; i++) {
+                    console.log("test");
                     var element = `
                     <div id="` + tagArray[i] + `_tag_container" class="tag_container">
                         <p id="` + tagArray[i] + `_tag" class="tag_text"></p>

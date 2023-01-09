@@ -45,7 +45,7 @@ function uploadInfo() {
                 document.getElementById("answer_input").disabled = false;
                 document.getElementById("tag_input").disabled = false;
                 document.getElementById("additional_notes_input").disabled = false;
-                document.getElementById("error").innerHTML = data[1];
+                document.getElementById("error").innerHTML = data_array[1];
             }
             else {
                 document.getElementById("question_input").value = "";

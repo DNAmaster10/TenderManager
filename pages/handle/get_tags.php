@@ -8,7 +8,7 @@
     else {
         $final_string = "";
         $input_tag = $_GET["tag"];
-        $stmt = $conn->prepare("SELECT tag FROM tags WHERE tag LIKE ?%");
+        $stmt = $conn->prepare("SELECT tag FROM tags WHERE tag LIKE '?%'");
         $stmt->bind_param("s", $input_tag);
         $stmt->execute();
         $stmt->get_result();

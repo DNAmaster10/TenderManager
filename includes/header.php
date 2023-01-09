@@ -1,5 +1,4 @@
 <?php
-    include $_SERVER["DOCUMENT_ROOT"]."/includes/return_login.php";
     echo "<div id='header' class='header'>";
     echo '
     <ul class="navbar_container_ul" id="navbar_container">

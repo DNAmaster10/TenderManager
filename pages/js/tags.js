@@ -5,7 +5,7 @@ function getTags() {
         type: "GET",
         success: function (data) {
             console.log("GetTags: " + data)
-            if (!data == "null") {
+            if (data != "null") {
                 var tagArray = data.split("#-#");
                 console.log(tagArray);
                 for (var i = 0; i < tagArray.length; i++) {

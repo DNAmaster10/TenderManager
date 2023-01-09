@@ -35,6 +35,7 @@ function uploadInfo() {
         type: "POST",
         data: {question:question,client:client,year:year,answer:answer,tags:tags,notes:notes},
         success: function(data) {
+            console.log(data);
             data_array = data.split(",");
             if (data_array[0] == "error") {
                 document.getElementById("error").value = data_array[1];

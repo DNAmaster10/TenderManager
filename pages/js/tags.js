@@ -13,7 +13,7 @@ function getTags() {
                         console.log("test");
                         var element = `
                         <div id="` + tagArray[i] + `_tag_container" class="tag_container">
-                            <p id="` + tagArray[i] + `_tag" class="tag_text"></p>
+                            <p id="` + tagArray[i] + `_tag" class="tag_text">` + tagArray[i] + `</p>
                         </div>
                         `;
                         var rootElement = document.getElementById("tag_list_container");

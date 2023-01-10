@@ -83,6 +83,7 @@ function getTags() {
                     var element = `<button type='button' class='tag_select_button' value='` + tagArray[i] + `' onclick='addTag(this.value)'>` + tagArray[i] + `</button>`;
                     var rootElement = document.getElementById("tag_button_container");
                     rootElement += element;
+                    console.log(element);
                 }
             }
         }

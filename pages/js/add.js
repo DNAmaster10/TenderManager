@@ -72,7 +72,15 @@ function getTags() {
         type: "GET",
         data: {tag:tagInput},
         success: function (data) {
-            addTagsToList(data);
+            document.getElementById("tag_button_container").innerHTML = "";
+            var tagArray = data.split("#-#");
+            for (var i = 0; i < tagArray.length; i++) {
+                if (!(tagArray[i].length < 1)) {
+                var element = "<button type='button' class='tag_select_button' value='" + tagArray[i] + "' onclick='addTag(this.value)'>" + tagArray[i] + "</button>";
+                var rootElement = document.getElementById("tag_button_container");
+                rootElement += element;
+        }
+    }
         }
     });
 }

@@ -13,12 +13,12 @@
     <body>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php"; ?>
         <div id="main_container">
-            <input type="text" placeholder="Question" id="question_input">
-            <input type="text" placeholder="Client" id="client_input">
-            <input type="text" placeholder="Year" id="year_input">
-            <textarea placeholder="Answer" id="answer_input" rows="5" cols="50"></textarea>
-            <textarea placeholder="Additional Notes" id="additional_notes_input" rows="5" cols="50"></textarea>
-            <input type="text" placeholder="Tag" id="tag_input" onkeyup="getTags()">
+            <input type="text" placeholder="Question" id="question_input" class="input_text">
+            <input type="text" placeholder="Client" id="client_input" class="input_text">
+            <input type="text" placeholder="Year" id="year_input" class="input_text">
+            <textarea placeholder="Answer" id="answer_input" rows="5" cols="50" class="input_text"></textarea>
+            <textarea placeholder="Additional Notes" id="additional_notes_input" rows="5" cols="50" class="input_text"></textarea>
+            <input type="text" placeholder="Tag" id="tag_input" onkeyup="getTags()" class="input_text">
             <div id="tag_button_container"></div>
             <div id="added_tag_button_container"></div>
             <input type="hidden" id="tag_list">

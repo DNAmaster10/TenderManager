@@ -10,6 +10,10 @@ body {
     display: block;
     width: 90%;
     margin: 3px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 3px;
+    font-size: 30px;
 }
 #client_input {
     display: block;
@@ -25,4 +29,17 @@ body {
 }
 #answer_input {
     display: block;
+    margin: 3px;
 }
+#additional_notes_input {
+    display: block;
+    margin: 3px;
+}
+#tag_input {
+    display: block;
+    margin: 3px;
+}
+
+
+
+

@@ -39,7 +39,12 @@ body {
     display: block;
     margin: 3px;
 }
-
-
+.input_text {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.input_text:hover {
+    background-color: lightgray;
+}
 
 

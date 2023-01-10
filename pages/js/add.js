@@ -80,7 +80,7 @@ function getTags() {
             for (var i = 0; i < tagArray.length; i++) {
                 if (!(tagArray[i].length < 1)) {
                     console.log("test");
-                    var element = `<button type='button' class='tag_select_button' value='` + tagArray[i] + `' onclick='addTag(this.value)'>` + tagArray[i] + `</button>`;
+                    var element = `<button type='button' id='`+tagArray[i]+`_tag' class='tag_select_button' value='` + tagArray[i] + `' onclick='addTag(this.value)'>` + tagArray[i] + `</button>`;
                     var rootElement = document.getElementById("tag_button_container");
                     rootElement += element;
                     console.log(element);

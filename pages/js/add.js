@@ -76,6 +76,7 @@ function getTags() {
             document.getElementById("tag_button_container").innerHTML = "";
             var tagArray = data.split("#-#");
             console.log(tagArray.length);
+            console.log("test1");
             for (var i = 0; i < tagArray.length; i++) {
                 if (!(tagArray[i].length < 1)) {
                     console.log("test");

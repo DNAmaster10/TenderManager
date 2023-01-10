@@ -6,3 +6,23 @@ body {
     margin: 10px;
     text-align: center;
 }
+#question_input {
+    display: block;
+    width: 90%;
+    margin: 3px;
+}
+#client_input {
+    display: block;
+    max-width: 300px;
+    width: 30%;
+    margin: 3px;
+}
+#year_input {
+    display: block;
+    max-width: 300px;
+    width: 30%;
+    margin: 3px;
+}
+#answer_input {
+    display: block;
+}

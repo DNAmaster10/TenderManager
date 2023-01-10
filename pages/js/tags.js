@@ -63,4 +63,10 @@ function addTag() {
         });
     }
 }
+function rename() {
+    
+}
+function openTagModal() {
+    
+}
 getTags();

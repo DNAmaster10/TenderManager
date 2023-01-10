@@ -11,7 +11,6 @@ function getTags() {
                 console.log(tagArray);
                 for (var i = 0; i < tagArray.length; i++) {
                     if (!(tagArray[i] == "")) {
-                        console.log("test");
                         var element = `
                         <div id="` + tagArray[i] + `_tag_container" class="tag_container">
                             <p id="` + tagArray[i] + `_tag" class="tag_text">` + tagArray[i] + `</p>

@@ -65,6 +65,6 @@ body {
     width: 30%;
     max-width: 300px;
 }
-.grow-rap {
-    
+textarea:focus, input:focus{
+    outline: none;
 }

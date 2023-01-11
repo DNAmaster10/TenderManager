@@ -113,7 +113,7 @@ function updateStars(star) {
     for (var i = star; i > 1; i--) {
         document.getElementById("" + i).innerHTML = "★";
     }
-    for (var i = star; i <= 6; i++) {
+    for (var i = star; i <= 5; i++) {
         document.getElementById("" + i).innerHTML = "☆";
     }
     document.getElementById("rating").value = star;

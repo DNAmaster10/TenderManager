@@ -25,6 +25,8 @@ textarea {
     margin-left: 5%;
 }
 #client_input {
+    padding: 5px;
+    font-size: 17px;
     display: block;
     display: inline;
     max-width: 300px;
@@ -33,6 +35,8 @@ textarea {
     align-self: center;
 }
 #year_input {
+    padding: 5px;
+    font-size: 17px;
     display: block;
     max-width: 300px;
     width: 30%;
@@ -56,22 +60,32 @@ textarea {
 #additional_notes_input {
     display: block;
     margin: 3px;
+    width: 88.5%;
+    margin-left: 5%;
 }
 #tag_input {
-    display: block;
-    margin: 3px;
+    width: 30%;
+    padding: 5px;
+    font-size: 17px;
+    margin-bottom: 5px;
 }
 .input_text:hover {
     background-color: lightgray;
 }
 #tag_button_container {
-    border: 1px solid black;
+    border: 1px solid #ccc;
     border-radius: 10px;
     padding: 3px;
-    margin: 3px;
-    width: 30%;
-    max-width: 300px;
+    margin-left: 34.6%;
+    width: 30.4%;
+    margin-bottom: 5px;
+    
 }
 textarea:focus, input:focus{
     outline: none;
+}
+.tag_select_button {
+    border: 1px solid black;
+    font-size: 14px;
+    border-radius: 10px;
 }

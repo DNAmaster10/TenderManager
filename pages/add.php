@@ -16,9 +16,7 @@
             <h2 id="essential_header" class="sub_head">Essential details</h2>
             <br>
             <input type="text" placeholder="Question" id="question_input" class="input_text">
-            <div class="grow-rap">
-                <textarea placeholder="Answer" id="answer_input" rows="5" cols="50" class="input_text" onInput="this.parentNode.dataset.replicatedValue = this.value"></textarea>
-            </div>
+            <textarea placeholder="Answer" id="answer_input" rows="5" cols="50" class="input_text"></textarea>
             <h2 id="optional_header" class="sub_head">Optional details</h2>
             <input type="text" placeholder="Client" id="client_input" class="input_text">
             <label for="client_input">Client: </label>

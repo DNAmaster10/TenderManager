@@ -110,10 +110,10 @@ function OnInput() {
 function updateStars(star) {
     console.log(star);
     star = parseInt(star);
-    for (var i = star; i > 0; i--) {
+    for (var i = star; i > 1; i--) {
         document.getElementById("" + i).innerHTML = "★";
     }
-    for (var i = star; i < 5; i++) {
+    for (var i = star; i <= 6; i++) {
         document.getElementById("" + i).innerHTML = "☆";
     }
     document.getElementById("rating").value = star;

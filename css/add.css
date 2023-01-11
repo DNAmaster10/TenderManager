@@ -17,15 +17,18 @@ body {
 }
 #client_input {
     display: block;
+    display: inline;
     max-width: 300px;
     width: 30%;
     margin: 3px;
+    align-self: center;
 }
 #year_input {
     display: block;
     max-width: 300px;
     width: 30%;
     margin: 3px;
+    display: inline;
 }
 #answer_input {
     display: block;

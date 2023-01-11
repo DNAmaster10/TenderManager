@@ -107,7 +107,7 @@ function OnInput() {
   this.style.height = 0;
   this.style.height = (this.scrollHeight) + "px";
 }
-updateStars(star) {
+function updateStars(star) {
     star = parseInt(star);
     for (var i = star; i > 0; i--) {
         document.getElementById("" + i).innerHTML = "★";

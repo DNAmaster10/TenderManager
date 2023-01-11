@@ -34,7 +34,7 @@
             <input type="text" placeholder="Enter tag" id="tag_input" onkeyup="getTags()" class="input_text">
             <div id="tag_button_container"></div>
             <div id="added_tag_button_container"></div>
-            <input type="hidden" id="tag_list">
+            <input type="hidden" id="tag_list" value="#-#">
             <button type="button" onclick="uploadInfo()">Submit</button>
             <p id="error"></p>
         </div>

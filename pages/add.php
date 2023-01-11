@@ -18,10 +18,10 @@
             <input type="text" placeholder="Question" id="question_input" class="input_text">
             <textarea placeholder="Answer" id="answer_input" rows="5" cols="50" class="input_text"></textarea>
             <h2 id="optional_header" class="sub_head">Optional details</h2>
-            <input type="text" placeholder="Client" id="client_input" class="input_text">
             <label for="client_input">Client: </label>
+            <input type="text" placeholder="Client" id="client_input" class="input_text">
+            <label for="year_input">Year: </label>
             <input type="text" placeholder="Year" id="year_input" class="input_text">
-            <labal for="year_input">Year: </labal>
             <textarea placeholder="Additional Notes" id="additional_notes_input" rows="5" cols="50" class="input_text"></textarea>
             <h3 id="tag_header" class="sub_head">Tags</h3>
             <input type="text" placeholder="Enter tag" id="tag_input" onkeyup="getTags()" class="input_text">

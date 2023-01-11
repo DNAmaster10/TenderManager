@@ -1,6 +1,15 @@
 body {
     margin: 0px;
 }
+input {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+}
+textarea {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
 #main_container {
     padding: 10px;
     margin: 10px;
@@ -10,7 +19,6 @@ body {
     display: block;
     width: 90%;
     margin: 3px;
-    border: 1px solid black;
     border-radius: 10px;
     padding: 3px;
     font-size: 30px;
@@ -32,11 +40,14 @@ body {
     display: inline;
 }
 #answer_input {
-    display: block;
     margin: 3px;
     width: 88.5%;
     margin-left: 5%;
     border: 2px solid #ccc;
+    padding: 1% 1%;
+}
+textarea {
+    display: block;
     padding: 1% 1%;
     background-color: #f8f8f8;
     font-size: 17px;
@@ -49,10 +60,6 @@ body {
 #tag_input {
     display: block;
     margin: 3px;
-}
-.input_text {
-    border: 1px solid black;
-    border-radius: 10px;
 }
 .input_text:hover {
     background-color: lightgray;

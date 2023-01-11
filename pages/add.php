@@ -24,11 +24,11 @@
             <input type="text" placeholder="Year" id="year_input" class="input_text">
             <textarea placeholder="Additional Notes" id="additional_notes_input" rows="5" cols="50" class="input_text"></textarea><br>
             <p>Rating: </p><br>
-            <p id="1" class="star" value="1" onclick="updateStars(this.value)">★</p>
-            <p id="2" class="star" value="2" onclick="updateStars(this.value)">☆</p>
-            <p id="3" class="star" value="3" onclick="updateStars(this.value)">☆</p>
-            <p id="4" class="star" value="4" onclick="updateStars(this.value)">☆</p>
-            <p id="5" class="star" value="5" onclick="updateStars(this.value)">☆</p>
+            <p id="1" class="star" value="1" onclick="updateStars(1)">★</p>
+            <p id="2" class="star" value="2" onclick="updateStars(2)">☆</p>
+            <p id="3" class="star" value="3" onclick="updateStars(3)">☆</p>
+            <p id="4" class="star" value="4" onclick="updateStars(4)">☆</p>
+            <p id="5" class="star" value="5" onclick="updateStars(5)">☆</p>
             <input type="hidden" name="rating" id="rating" value="1">
             <h3 id="tag_header" class="sub_head">Tags</h3>
             <input type="text" placeholder="Enter tag" id="tag_input" onkeyup="getTags()" class="input_text">

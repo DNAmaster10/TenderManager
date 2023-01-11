@@ -89,3 +89,7 @@ textarea:focus, input:focus{
     font-size: 14px;
     border-radius: 10px;
 }
+.star {
+    display: inline;
+    font-size: 25px;
+}

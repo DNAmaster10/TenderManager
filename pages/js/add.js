@@ -107,7 +107,16 @@ function OnInput() {
   this.style.height = 0;
   this.style.height = (this.scrollHeight) + "px";
 }
-
+updateStars(star) {
+    star = parseInt(star);
+    for (var i = star; i > 0; i--) {
+        document.getElementById("" + i).innerHTML = "★";
+    }
+    for (var i = star; i < 5; i++) {
+        document.getElementById("" + i).innerHTML = "☆";
+    }
+    document.getElementById("rating").value = star;
+}
 
 document.getElementById("question_input").disabled = false;
 document.getElementById("client_input").disabled = false;

@@ -128,7 +128,7 @@ function addTag(tag) {
     else {
         var returnArray = [];
         tagArray = tagArray.split("#-#");
-        for (var i = 0; i < tagArray.length; ) {
+        for (var i = 0; i < tagArray.length; i++) {
             if (tagArray[i] != "") {
                 returnArray.push(tagArray[i]);
             }

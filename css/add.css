@@ -46,5 +46,13 @@ body {
 .input_text:hover {
     background-color: lightgray;
 }
+#tag_button_container {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 3px;
+    margin: 3px;
+    width: 30%;
+    max-width: 300px;
+}
 
 

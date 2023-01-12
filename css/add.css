@@ -73,13 +73,11 @@ textarea {
     background-color: lightgray;
 }
 #tag_button_container {
-    border: 1px solid #ccc;
     border-radius: 10px;
     padding: 3px;
     margin-left: 34.6%;
     width: 30.4%;
     margin-bottom: 5px;
-    
 }
 textarea:focus, input:focus{
     outline: none;
@@ -92,4 +90,12 @@ textarea:focus, input:focus{
 .star {
     display: inline;
     font-size: 25px;
+}
+#added_tag_button_container {
+    border: 2px solid #ccc;
+    padding: 3px;
+    margin-bottom: 10px;
+    width: 30.4%;
+    margin-left: 34.5%;
+    border-radius: 10px;
 }

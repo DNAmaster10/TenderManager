@@ -139,9 +139,10 @@ function addTag(tag) {
     }
     document.getElementById("tag_list").value = returnString;
     rootElement = document.getElementById("added_tag_button_container");
+    rootElement.innerHTML = "";
     for (var i = 0; i < returnArray.length; i++) {
         var element = `
-        <button type="button" value="`+returnArray[i]+`" class="tag_select_button" id="`+returnArray[i]+`_added_tag" onclick="removeTag(this)">`+returnArray[i]+`</button>
+        <button type="button" value="`+returnArray[i]+`" class="tag_select_button" id="`+returnArray[i]+`_added_tag" onclick="removeTag(this)" onmouseover="addX('`+returnArray[i]+`')">`+returnArray[i]+`</button>
         `;
         rootElement.innerHTML += element;
     }

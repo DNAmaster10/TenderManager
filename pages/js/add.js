@@ -75,7 +75,7 @@ function getTags() {
             document.getElementById("tag_button_container").innerHTML = "";
             var tagArray = data.split("#-#");
             for (var i = 0; i < tagArray.length; i++) {
-                if (!(tagArray[i].length < 1) && !(tagArray[i] == "null")) {
+                if (!(tagArray[i].length < 1) && !(tagArray[i] == "null") && !(document.getElementById("tag_list").value.contains(tagArray[i]))) {
                     var element = `
                     <button type='button' id='`+tagArray[i]+`_tag' class='tag_select_button' value='` + tagArray[i] + `' onclick='addTag(this.value)'>` + tagArray[i] + `</button>
                     `;
@@ -142,14 +142,38 @@ function addTag(tag) {
     rootElement.innerHTML = "";
     for (var i = 0; i < returnArray.length; i++) {
         var element = `
-        <button type="button" value="`+returnArray[i]+`" class="tag_select_button" id="`+returnArray[i]+`_added_tag" onclick="removeTag(this)" onmouseover="addX('`+returnArray[i]+`')">`+returnArray[i]+`</button>
+        <button type="button" value="`+returnArray[i]+`" class="tag_select_button" id="`+returnArray[i]+`_added_tag" onclick="removeTag('`+returnArray[i]+`')" onmouseover="addX('`+returnArray[i]+`')" onmouseout="removeX('`+returnArray[i]+`')">`+returnArray[i]+`</button>
         `;
         rootElement.innerHTML += element;
     }
     document.getElementById("tag_input").value = "";
     document.getElementById("tag_button_container").innerHTML = "";
 }
-
+function addX(tagName) {
+    document.getElementById(tagName + "_added_tag").innerHTML = tagName + " X";
+}
+function removeX(tagName) {
+    document.getElementById(tagName + "_added_tag").innerHTML = tagName;
+}
+function removeTag(tagName) {
+    tagArray = document.getElementById("tag_list").value;
+    tagArray = tagArray.split("#-#");
+    returnArray = []
+    for (var i = 0; i < tagArray.length; i++) {
+        if (!(tagArray[i] == "") && !(tagArray[i] == tagName)) {
+            returnArray.push(tagArray[i]);
+        }
+    }
+    document.getElementById("tag_list").value = returnArray.join("#-#");
+    rootElement = document.getElementById("added_tag_button_container");
+    rootElement.innerHTML = "";
+    for (var i = 0; i < returnArray.length; i++) {
+        var element = `
+        <button type="button" value="`+returnArray[i]+`" class="tag_select_button" id="`+returnArray[i]+`_added_tag" onclick="removeTag('`+returnArray[i]+`')" onmouseover="addX('`+returnArray[i]+`')" onmouseout="removeX('`+returnArray[i]+`')">`+returnArray[i]+`</button>
+        `;
+        rootElement += element;
+    }
+}
 document.getElementById("question_input").disabled = false;
 document.getElementById("client_input").disabled = false;
 document.getElementById("year_input").disabled = false;

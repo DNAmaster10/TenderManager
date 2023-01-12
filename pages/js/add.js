@@ -62,6 +62,7 @@ function uploadInfo() {
                 document.getElementById("additional_notes_input").disabled = false;
                 document.getElementById("tag_list").value = "#-#";
                 document.getElementById("added_tag_button_container").innerHTML = "";
+                updateStars("1");
             }
         }
     });

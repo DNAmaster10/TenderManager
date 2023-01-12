@@ -91,7 +91,7 @@ function addTagsToList(data) {
     var tagArray = data.split("#-#");
     for (var i = 0; i < tagArray.length; i++) {
         if (!(tagArray[i].length < 1)) {
-            var element = "<button type='button' class='tag_select_button' value='" + tagArray[i] + "' onclick='addTag(this)'>" + tagArray[i] + "</button>";
+            var element = "<button type='button' class='tag_select_button' value='" + tagArray[i] + "' onclick='addTag(`"+ tagArray[i] +"`)'>" + tagArray[i] + "</button>";
             var rootElement = document.getElementById("tag_button_container");
             rootElement += element;
         }
@@ -119,7 +119,7 @@ function updateStars(star) {
     document.getElementById("rating").value = star;
 }
 function addTag(tag) {
-    var tagValue = this.innerHTML;
+    var tagValue = tag;
     console.log(tagValue);
     var tagArray = document.getElementById("tag_list").value;
     if (tagArray == "") {

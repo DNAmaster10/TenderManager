@@ -120,6 +120,7 @@ function updateStars(star) {
 }
 function addTag(tag) {
     var tagValue = tag.innerHTML;
+    console.log(tagValue);
     var tagArray = document.getElementById("tag_list").value;
     if (tagArray == "") {
         var returnString = tagValue;

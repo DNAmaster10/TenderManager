@@ -119,7 +119,7 @@ function updateStars(star) {
     document.getElementById("rating").value = star;
 }
 function addTag(tag) {
-    var tagValue = tag.innerHTML;
+    var tagValue = this.innerHTML;
     console.log(tagValue);
     var tagArray = document.getElementById("tag_list").value;
     if (tagArray == "") {

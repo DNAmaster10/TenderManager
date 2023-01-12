@@ -19,8 +19,8 @@ function uploadInfo() {
     if (answer.length < 1) {
         document.getElementById("error").value = "Enter an answer";
     }
-    if (tags.length < 1) {
-        document.getElementById("error").value = "Attach at least 1 tag"
+    if (tags.length < 1 || tags == "#-#" || tags == "") {
+        document.getElementById("error").value = "Attach at least 1 tag";
     }
     if (client.length < 1) {
         client = "none";
@@ -61,6 +61,7 @@ function uploadInfo() {
                 document.getElementById("tag_input").disabled = false;
                 document.getElementById("additional_notes_input").disabled = false;
                 document.getElementById("tag_list").value = "#-#";
+                document.getElementById("added_tag_button_container").innerHTML = "";
             }
         }
     });

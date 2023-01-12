@@ -49,7 +49,7 @@
     if (isset($_POST["year"]) && strlen($_POST["year"]) > 0) {
         if (is_numeric($_POST["year"])) {
             $stmt = $conn->prepare("UPDATE tendors SET year=? WHERE id=?");
-            $stmt->bind_param("i", intval($_POST["year"]), $id);
+            $stmt->bind_param("ii", intval($_POST["year"]), $id);
             $stmt->execute();
             $stmt->close();
         }

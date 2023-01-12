@@ -12,6 +12,7 @@ function uploadInfo() {
     var answer = document.getElementById("answer_input").value;
     var tags = document.getElementById("tag_list").value;
     var notes = document.getElementById("additional_notes_input").value;
+    var rating = document.getElementById("rating").value;
     if (question.length < 1) {
         document.getElementById("error").value = "Enter a question";
     }
@@ -33,9 +34,8 @@ function uploadInfo() {
     $.ajax({
         url: "/pages/handle/handle_add.php",
         type: "POST",
-        data: {question:question,client:client,year:year,answer:answer,tags:tags,notes:notes},
+        data: {question:question,client:client,year:year,answer:answer,tags:tags,notes:notes,rating:rating},
         success: function(data) {
-            console.log(data);
             data_array = data.split(":");
             if (data_array[0] == "error") {
                 document.getElementById("error").value = data_array[1];
@@ -60,6 +60,7 @@ function uploadInfo() {
                 document.getElementById("answer_input").disabled = false;
                 document.getElementById("tag_input").disabled = false;
                 document.getElementById("additional_notes_input").disabled = false;
+                document.getElementById("tag_list").value = "#-#";
             }
         }
     });
@@ -109,7 +110,6 @@ function OnInput() {
   this.style.height = (this.scrollHeight) + "px";
 }
 function updateStars(star) {
-    console.log(star);
     star = parseInt(star);
     for (var i = star; i > 0; i--) {
         document.getElementById("" + i).innerHTML = "★";
@@ -121,7 +121,6 @@ function updateStars(star) {
 }
 function addTag(tag) {
     var tagValue = tag;
-    console.log(tagValue);
     var tagArray = document.getElementById("tag_list").value;
     if (tagArray == "") {
         var returnString = tagValue;
@@ -172,7 +171,7 @@ function removeTag(tagName) {
         var element = `
         <button type="button" value="`+returnArray[i]+`" class="tag_select_button" id="`+returnArray[i]+`_added_tag" onclick="removeTag('`+returnArray[i]+`')" onmouseover="addX('`+returnArray[i]+`')" onmouseout="removeX('`+returnArray[i]+`')">`+returnArray[i]+`</button>
         `;
-        rootElement += element;
+        rootElement.innerHTML += element;
     }
 }
 document.getElementById("question_input").disabled = false;

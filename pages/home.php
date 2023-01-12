@@ -8,6 +8,7 @@
     <head>
         <title>Home</title>
         <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/home.css">
     </head>
     <body>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php"; ?>

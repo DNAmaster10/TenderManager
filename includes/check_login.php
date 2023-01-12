@@ -22,5 +22,6 @@
         header ("Location: /pages/error.php");
         die();
     }
+    error_log(password_hash($_POST["password"], PASSWORD_DEFAULT));
     unset ($result);
 ?>

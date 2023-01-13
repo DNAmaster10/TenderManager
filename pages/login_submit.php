@@ -25,6 +25,7 @@
         die();
     }
     $_SESSION["username"] = $_POST["username"];
+    header ("Location: /pages/home.php");
 ?>
 <!DOCTYPE html>
 <html>

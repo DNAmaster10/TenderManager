@@ -22,6 +22,5 @@
         header ("Location: /pages/error.php");
         die();
     }
-    error_log(password_hash($_SESSION["password"], PASSWORD_DEFAULT, ["cost" => 15]));
     unset ($result);
 ?>

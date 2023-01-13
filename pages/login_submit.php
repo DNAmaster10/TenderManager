@@ -19,8 +19,7 @@
         die();
     }
     
-    $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    if (!password_verify($hash, $result)) {
+    if (!password_verify($_POST["password"], $result)) {
         $_SESSION["login_error"] = "Please enter a valid username and password";
         header ("Location: /pages/login.php");
         die();

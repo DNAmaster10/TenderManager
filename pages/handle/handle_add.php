@@ -55,6 +55,12 @@
             $stmt->close();
         }
     }
+    else {
+        $stmt = $conn->prepare("UPDATE tendors SET year=? WHERE id=?");
+        $stmt->bind_param("i", 0);
+        $stmt->execute();
+        $stmt->close();
+    }
     if (isset($_POST["notes"]) && strlen($_POST["notes"]) > 0) {
         $stmt = $conn->prepare("UPDATE tendors SET notes=? WHERE id=?");
         $stmt->bind_param("si", $_POST["notes"], $id);

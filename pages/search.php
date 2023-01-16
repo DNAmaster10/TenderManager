@@ -21,7 +21,7 @@
                 <label for="search_clients">Search Clients</label>
                 <input type="checkbox" id="search_results">
                 <div id="tags">
-                    <input type="text" id="tag_input" placeholder="Add Tag">
+                    <input type="text" id="tag_input" placeholder="Add Tag" onkeyup="getTags()">
                     <div id="tag_container"></div>
                     <div id="added_tag_container"></div>
                     <input type="hidded" id="tag_list">
@@ -40,4 +40,6 @@
             </div>
         </div>
     </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/pages/js/search.js"></script>
 </html>

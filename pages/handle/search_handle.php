@@ -7,10 +7,6 @@
         echo ("error:$error");
         die();
     }
-
-    if (!isset($_GET["search_term"])) {
-        error("no search term was set");
-    }
     if (!isset($_GET["search_types"]) || strlen($_GET["search_types"] < 1)) {
         error("no search types set");
     }
@@ -24,65 +20,89 @@
     //Format: #-#type@-@id-#-question#-#type@-@id-#-question#-#
     $return_string = "";
     $search_types = explode("#-#", $_GET["search_types"]);
-    if (in_array("questions", $search_types)) {
-        if (!$contains_tags) {
-            $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question LIKE %?%");
-            $stmt->bind_param("s", $_GET["search_term"]);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            while ($row = $result->fetch_assoc()) {
-                $return_string .= "#-#question@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
+    if (isset($_GET["search_term"])) {
+        if (in_array("questions", $search_types)) {
+            if (!$contains_tags) {
+                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question LIKE %?%");
+                $stmt->bind_param("s", $_GET["search_term"]);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_assoc()) {
+                    $return_string .= "#-#question@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
+                }
+                unset($result);
+                $stmt->close();
             }
-            unset($result);
-            $stmt->close();
+            else {
+                $statement = "SELECT id,question,client,year,rating FROM tendors WHERE question LIKE %?%";
+                $types = "s";
+                for ($i = 0; $i < count($tag_array); $i++) {
+                    $statement .= " AND tags LIKE %?%";
+                    $types .= "s";
+                }
+                $stmt = $conn->prepare($statement);
+                $stmt->bind_param($types, $_GET["search_term"], $tag_array);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_assoc()) {
+                    $return_string .= "#-#question@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
+                }
+                unset($result);
+                $stmt->close();
+            }
         }
-        else {
-            $statement = "SELECT id,question,client,year,rating FROM tendors WHERE question LIKE %?%";
-            $types = "s";
-            for ($i = 0; $i < count($tag_array); $i++) {
-                $statement .= " AND tags LIKE %?%";
-                $types .= "s";
+        if (in_array("clients", $search_types)) {
+            if (!$contains_tags) {
+                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE client LIKE %?%");
+                $stmt->bind_param("s", $_GET["search_term"]);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_assoc()) {
+                    $return_string .= "#-#client@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
+                }
+                unset ($result);
+                $stmt->close();
             }
-            $stmt = $conn->prepare($statement);
-            $stmt->bind_param($types, $_GET["search_term"], $tag_array);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            while ($row = $result->fetch_assoc()) {
-                $return_string .= "#-#question@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
+            else {
+                $statement = "SELECT id,question,client,year,rating FROM tendors WHERE client LIKE %?%";
+                $types = "s";
+                for ($i = 0; $i < count($tag_array); $i++) {
+                    $statement .= " AND tags LIKE %?%";
+                    $types .= "s";
+                }
+                $stmt = $conn->prepare($statement);
+                $stmt->bind_param($types, $_GET["search_term"], $tag_array);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_assoc()) {
+                    $return_string .= "#-#client@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
+                }
+                unset ($result);
+                $stmt->close();
             }
-            unset($result);
-            $stmt->close();
         }
+        echo ($return_string);
     }
-    if (in_array("clients", $search_types)) {
-        if (!$contains_tags) {
-            $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE client LIKE %?%");
-            $stmt->bind_param("s", $_GET["search_term"]);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            while ($row = $result->fetch_assoc()) {
-                $return_string .= "#-#client@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
-            }
-            unset ($result);
-            $stmt->close();
+    else if (isset($_GET["tag_list"]) && strlen($_GET["tag_list"]) > 0) {
+        $tag_array = explode("#-#", $_GET["tag_list"]);
+        $statement = "SELECT id,question,client,year,rating FROM tendors WHERE tags LIKE %?%";
+        $types = "s";
+        for ($i = 1; $i < count($tag_array); $i++) {
+            $statement .= " AND tags LIKE %?%";
+            $types .= "s";
         }
-        else {
-            $statement = "SELECT id,question,client,year,rating FROM tendors WHERE client LIKE %?%";
-            $types = "s";
-            for ($i = 0; $i < count($tag_array); $i++) {
-                $statement .= " AND tags LIKE %?%";
-                $types .= "s";
-            }
-            $stmt = $conn->prepare($statement);
-            $stmt->bind_param($types, $_GET["search_term"], $tag_array);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            while ($row = $result->fetch_assoc()) {
-                $return_string .= "#-#client@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
-            }
-            unset ($result);
-            $stmt->close();
+        $stmt = $conn->prepare($statement);
+        $stmt->bind_param($types, $tag_array);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $return_string .= "#-#client@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
         }
+        unset($result);
+        $stmt->close();
+        echo ($return_string);
     }
-    echo ($return_string);
+    else {
+        error("No tags or search terms set");
+    }
 ?>

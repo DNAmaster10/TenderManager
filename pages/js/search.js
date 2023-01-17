@@ -50,3 +50,20 @@ function getTags() {
         document.getElementById("tag_container").innerHTML = "";
     }
 }
+function addTag(tag) {
+    if (tag.length > 0) {
+        var tagArray = document.getElementById("tag_list").value;
+        if (tagArray.length < 1) {
+            document.getElementById("tag_list").value = tagArray;
+        }
+        tagArray = tagArray.split("#-#");
+        tagArray.push(tag);
+        var tagString = tagArray.join("#-#");
+        document.getElementById("tag_list").value = tagString;
+
+        document.getElementById("tag_container").innerHTML = "";
+        document.getElementById("tag_input").value = "";
+
+        element = "<button>"
+    }
+}

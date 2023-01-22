@@ -42,7 +42,7 @@ function getTags() {
                         var element = `
                         <button type="button" id="`+tagArray[i]+`_tag" class="tag_select_button" value="`+tagArray[i]+`" onclick="addTag(this.value)">`+tagArray[i]+`</button>
                         `;
-                        rootElement += element;
+                        rootElement.innerHTML += element;
                         console.log(element);
                     }
                 }

@@ -24,7 +24,7 @@
                     <input type="text" id="tag_input" placeholder="Add Tag" onkeyup="getTags()">
                     <div id="tag_container"></div>
                     <div id="added_tag_container"></div>
-                    <input type="hidded" id="tag_list">
+                    <input type="hidden" id="tag_list">
                 </div>
             </div>
             <div id="results_container">

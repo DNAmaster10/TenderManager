@@ -43,7 +43,6 @@ function getTags() {
                         <button type="button" id="`+tagArray[i]+`_tag" class="tag_select_button" value="`+tagArray[i]+`" onclick="addTag(this.value)">`+tagArray[i]+`</button>
                         `;
                         rootElement.innerHTML += element;
-                        console.log(element);
                     }
                 }
             }
@@ -73,7 +72,8 @@ function addTag(tag) {
         var returnString = returnArray.join("#-#");
         document.getElementById("tag_list").value = returnString;
         
-        var rootElement = document.getElementById("added_tag_container").innerHTML = "";
+        var rootElement = document.getElementById("added_tag_container");
+        rootElement.innerHTML = "";
         for (var i = 0; i < returnArray.length; i++) {
             var element = `
             <button type="button" value="`+returnArray[i]+`" class="tag_select_button" id="`+returnArray[i]+`_added_tag" onclick="removeTag(this.value)" onmouseover="addX(this.value)" onmouseout="removeX(this.value")>`+returnArray[i]+`</button>

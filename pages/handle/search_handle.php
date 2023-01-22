@@ -23,7 +23,7 @@
     if (isset($_GET["search_term"])) {
         if (in_array("questions", $search_types)) {
             if (!$contains_tags) {
-                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question LIKE %?%");
+                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question LIKE '%?%'");
                 $stmt->bind_param("s", $_GET["search_term"]);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -34,10 +34,10 @@
                 $stmt->close();
             }
             else {
-                $statement = "SELECT id,question,client,year,rating FROM tendors WHERE question LIKE %?%";
+                $statement = "SELECT id,question,client,year,rating FROM tendors WHERE question LIKE '%?%'";
                 $types = "s";
                 for ($i = 0; $i < count($tag_array); $i++) {
-                    $statement .= " AND tags LIKE %?%";
+                    $statement .= " AND tags LIKE '%?%'";
                     $types .= "s";
                 }
                 $stmt = $conn->prepare($statement);

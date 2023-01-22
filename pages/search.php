@@ -19,7 +19,7 @@
                 <label for="search_tag">Search Tags</label>
                 <input type="checkbox" id="search_tags">
                 <label for="search_clients">Search Clients</label>
-                <input type="checkbox" id="search_results">
+                <input type="checkbox" id="search_clients">
                 <div id="tags">
                     <input type="text" id="tag_input" placeholder="Add Tag" onkeyup="getTags()">
                     <div id="tag_container"></div>

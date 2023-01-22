@@ -40,8 +40,9 @@
                     $statement .= " AND tags LIKE '%?%'";
                     $types .= "s";
                 }
+                $param_vals = array_shift($tag_array, $_GET["search_term"]);
                 $stmt = $conn->prepare($statement);
-                $stmt->bind_param($types, $_GET["search_term"], $tag_array);
+                $stmt->bind_param($types, $param_vals);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {

@@ -35,9 +35,9 @@ function getTags() {
             success: function (data) {
                 document.getElementById("tag_container").innerHTML = "";
                 var tagArray = data.split("#-#");
-                var tagList = document.getElementById("tag_list");
+                var tagList = document.getElementById("tag_list").value;
                 for (var i = 0; i < tagArray.length; i++) {
-                    if (!(tagArray[i].length < 1) && !(tagArray[i] == "null") && !(tagArray.includes(tagArray[i]))) {
+                    if (!(tagArray[i].length < 1) && !(tagArray[i] == "null") && !(tagList.includes(tagArray[i]))) {
                         var element = `
                         <button type="button" id="`+tagArray[i]+`_tag" class="tag_select_button" value="`+tagArray[i]+`" onclick="addTag(this.value)">`+tagArray[i]+`</button>
                         `;

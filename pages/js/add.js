@@ -160,7 +160,7 @@ function removeX(tagName) {
 function removeTag(tagName) {
     tagArray = document.getElementById("tag_list").value;
     tagArray = tagArray.split("#-#");
-    returnArray = []
+    returnArray = [];
     for (var i = 0; i < tagArray.length; i++) {
         if (!(tagArray[i] == "") && !(tagArray[i] == tagName)) {
             returnArray.push(tagArray[i]);

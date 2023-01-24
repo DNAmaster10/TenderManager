@@ -44,7 +44,6 @@
                 }
                 $param_vals = array_unshift($tag_array, "%".$_GET["search_term"]."%");
                 $stmt = $conn->prepare($statement);
-                $stmt->bind_param();
                 $stmt->execute($param_vals);
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {

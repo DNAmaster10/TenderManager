@@ -11,7 +11,7 @@
     if (!isset($_GET["search_types"]) || strlen($_GET["search_types"] < 1)) {
         error("no search types set");
     }
-    if (isset($_GET["tag_list"]) && strlen($_GET["tag_list"]) > 0 && $_GET["tag_list"] == "false") {
+    if (isset($_GET["tag_list"]) && strlen($_GET["tag_list"]) > 0 && $_GET["tag_list"] != "false") {
         $contains_tags = true;
         $tag_array = explode("#-#", $_GET["tag_list"]);
     }

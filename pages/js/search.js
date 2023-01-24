@@ -107,7 +107,7 @@ function removeTag(tagName) {
     document.getElementById("tag_list").value = returnArray.join("#-#");
     rootElement = document.getElementById("added_tag_container");
     rootElement.innerHTML = "";
-    for (var i = 0; i < returnArray.length[i]; i++) {
+    for (var i = 0; i < returnArray.length; i++) {
         var element = `
         <button type="button" value="`+returnArray[i]+`" class="tag_select_button" id="`+returnArray[i]+`_added_tag" onclick="removeTag(this.value)" onmouseover="addX(this.value)" onmouseout="removeX(this.value)">`+returnArray[i]+`</button>
         `;

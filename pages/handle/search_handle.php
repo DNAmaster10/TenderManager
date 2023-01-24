@@ -13,6 +13,9 @@
     if (isset($_GET["tag_list"]) && strlen($_GET["tag_list"]) > 0 && $_GET["tag_list"] != "false") {
         $contains_tags = true;
         $tag_array = explode("#-#", $_GET["tag_list"]);
+        for ($i = 0; $i < count($tag_array); $i++) {
+            $tag_array[$i] = "%".$tag_array[$i]."%";
+        }
     }
     else {
         $contains_tags = false;
@@ -40,14 +43,11 @@
                 for ($i = 0; $i < count($tag_array); $i++) {
                     $statement .= " AND tags LIKE ?";
                     $types .= "s";
-                    $tag_array[$i] = "%".$tag_array[$i]."%";
                 }
-                array_unshift($tag_array, "%".$_GET["search_term"]."%");
-                error_log("Statement: ".$statement);
-                error_log("Types: ".$types);
-                error_log("Param len: ".count($tag_array));
+                $search_array = $tag_array;
+                array_unshift($search_array, "%".$_GET["search_term"]."%");
                 $stmt = $conn->prepare($statement);
-                $stmt->bind_param($types, ...$tag_array);
+                $stmt->bind_param($types, ...$search_array);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {
@@ -59,8 +59,8 @@
         }
         if (in_array("clients", $search_types)) {
             if (!$contains_tags) {
-                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE client LIKE %?%");
-                $stmt->bind_param("s", $_GET["search_term"]);
+                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE client LIKE ?");
+                $stmt->bind_param("s", "%".$_GET["search_term"]."%");
                 $stmt->execute();
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {
@@ -70,14 +70,16 @@
                 $stmt->close();
             }
             else {
-                $statement = "SELECT id,question,client,year,rating FROM tendors WHERE client LIKE %?%";
+                $statement = "SELECT id,question,client,year,rating FROM tendors WHERE client LIKE ?";
                 $types = "s";
                 for ($i = 0; $i < count($tag_array); $i++) {
-                    $statement .= " AND tags LIKE %?%";
+                    $statement .= " AND tags LIKE ?";
                     $types .= "s";
                 }
+                $search_array = $tag_array;
+                array_unshift($search_array, "%".$_GET["search_term"]."%");
                 $stmt = $conn->prepare($statement);
-                $stmt->bind_param($types, $_GET["search_term"], $tag_array);
+                $stmt->bind_param($types, ...$search_array);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {
@@ -91,14 +93,16 @@
     }
     else if (isset($_GET["tag_list"]) && strlen($_GET["tag_list"]) > 0) {
         $tag_array = explode("#-#", $_GET["tag_list"]);
-        $statement = "SELECT id,question,client,year,rating FROM tendors WHERE tags LIKE %?%";
+        $statement = "SELECT id,question,client,year,rating FROM tendors WHERE tags LIKE ?";
         $types = "s";
         for ($i = 1; $i < count($tag_array); $i++) {
-            $statement .= " AND tags LIKE %?%";
+            $statement .= " AND tags LIKE ?";
             $types .= "s";
         }
+        $search_array = $tag_array;
+        array_unshift($search_array, "%".$_GET["search_term"]."%");
         $stmt = $conn->prepare($statement);
-        $stmt->bind_param($types, $tag_array);
+        $stmt->bind_param($types, ...$search_array);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {

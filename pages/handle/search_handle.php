@@ -12,6 +12,7 @@
         error("no search types set");
     }
     if (isset($_GET["tag_list"]) && strlen($_GET["tag_list"]) > 0) {
+        error_log($_GET["tag_list"]);
         $contains_tags = true;
         $tag_array = explode("#-#", $_GET["tag_list"]);
     }

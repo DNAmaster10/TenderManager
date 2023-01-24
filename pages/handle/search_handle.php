@@ -41,7 +41,9 @@
                     $statement .= " AND tags LIKE '%?%'";
                     $types .= "s";
                 }
+                error_log("Search types string: ".$types);
                 $param_vals = array_unshift($tag_array, $_GET["search_term"]);
+                error_log("Search array: ".implode($param_vals));
                 $stmt = $conn->prepare($statement);
                 $stmt->bind_param($types, $param_vals);
                 $stmt->execute();

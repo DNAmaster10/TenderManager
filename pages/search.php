@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="/css/search.css">
     </head>
     <body>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php"; ?>
         <div id="main_container">
             <div id="search_box">
                 <input type="text" id="search_input" onkeyup="submitSearch()">

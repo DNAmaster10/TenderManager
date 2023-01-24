@@ -59,8 +59,9 @@
         }
         if (in_array("clients", $search_types)) {
             if (!$contains_tags) {
+                $param = "%".$_GET["search_term"]."%";
                 $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE client LIKE ?");
-                $stmt->bind_param("s", "%".$_GET["search_term"]."%");
+                $stmt->bind_param("s", $param);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {

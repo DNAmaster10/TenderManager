@@ -48,7 +48,7 @@
                 error_log("Types: ".$types);
                 error_log("Param len: ".count($tag_array));
                 $stmt = $conn->prepare($statement);
-                call_user_func_array(array($stmt, 'bin_param'), $tag_array);
+                call_user_func_array(array($stmt, 'bind_param'), $tag_array);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {

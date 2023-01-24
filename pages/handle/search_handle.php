@@ -42,9 +42,13 @@
                     $types .= "s";
                     $tag_array[$i] = "%".$tag_array[$i]."%";
                 }
-                $param_vals = array_unshift($tag_array, "%".$_GET["search_term"]."%");
+                array_unshift($tag_array, "%".$_GET["search_term"]."%");
+                error_log("Statement: ".$statement);
+                error_log("Types: ".$types);
+                error_log("Param len: ".count($tag_array));
                 $stmt = $conn->prepare($statement);
-                $stmt->execute($param_vals);
+                $stmt->bind_param($types, $tag_array);
+                $stmt->execute();
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {
                     $return_string .= "#-#question@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];

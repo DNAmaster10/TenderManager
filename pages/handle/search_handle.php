@@ -43,7 +43,8 @@
                 }
                 error_log("Search types string: ".$types);
                 $param_vals = array_unshift($tag_array, $_GET["search_term"]);
-                error_log("Search array: ".implode($param_vals));
+                $param_string = implode("---", $param_string);
+                error_log("Search array: ".$param_string);
                 $stmt = $conn->prepare($statement);
                 $stmt->bind_param($types, $param_vals);
                 $stmt->execute();

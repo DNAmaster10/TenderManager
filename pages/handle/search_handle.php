@@ -35,7 +35,7 @@
                 $stmt->close();
             }
             else {
-                error_log("Tag array ".count($tag_array));
+                error_log("Tag array ".count($tag_array). " First: ". $tag_array[0]);
                 $statement = "SELECT id,question,client,year,rating FROM tendors WHERE question LIKE '%?%'";
                 $types = "s";
                 for ($i = 0; $i < count($tag_array); $i++) {

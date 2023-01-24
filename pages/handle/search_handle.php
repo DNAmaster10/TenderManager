@@ -43,7 +43,6 @@
                     $tag_array[$i] = "%".$tag_array[$i]."%";
                 }
                 array_unshift($tag_array, "%".$_GET["search_term"]."%");
-                array_unshift($tag_array, $types);
                 error_log("Statement: ".$statement);
                 error_log("Types: ".$types);
                 error_log("Param len: ".count($tag_array));

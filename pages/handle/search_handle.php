@@ -24,8 +24,9 @@
     if (isset($_GET["search_term"])) {
         if (in_array("questions", $search_types)) {
             if (!$contains_tags) {
-                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question LIKE '%?%'");
-                $stmt->bind_param("s", $_GET["search_term"]);
+                $param = "%".$_GET["search_term"]."%";
+                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question LIKE ?");
+                $stmt->bind_param("s", $param);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {

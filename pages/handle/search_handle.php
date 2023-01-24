@@ -7,7 +7,6 @@
         echo ("error:$error");
         die();
     }
-    error_log("Searching");
     if (!isset($_GET["search_types"]) || strlen($_GET["search_types"] < 1)) {
         error("no search types set");
     }
@@ -36,16 +35,14 @@
                 $stmt->close();
             }
             else {
-                error_log("Tag array ".count($tag_array). " First: ". $tag_array[0]);
-                $statement = "SELECT id,question,client,year,rating FROM tendors WHERE question LIKE '%?%'";
+                $statement = "SELECT id,question,client,year,rating FROM tendors WHERE question LIKE ?";
                 $types = "s";
                 for ($i = 0; $i < count($tag_array); $i++) {
-                    $statement .= " AND tags LIKE '%?%'";
+                    $statement .= " AND tags LIKE ?";
                     $types .= "s";
+                    $tag_array[$i] = "%".$tag_array[$i]."%";
                 }
-                error_log("Search types string: ".$types);
-                $param_vals = array_unshift($tag_array, $_GET["search_term"]);
-                error_log("Param array: ".$param_vals);
+                $param_vals = array_unshift($tag_array, "%".$_GET["search_term"]."%");
                 $stmt = $conn->prepare($statement);
                 $stmt->bind_param($types, $param_vals);
                 $stmt->execute();

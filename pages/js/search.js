@@ -15,13 +15,15 @@ function submitSearch() {
     if (tagList.length < 1) {
         tagList = "false";
     }
-    console.log("Passed checks");
+    
     if (!(searchTerm.length < 0 || searchTerm == "" ) && (searchTypes != "")) {
+        console.log("Passed checks");
         $.ajax({
             url: "/pages/handle/search_handle.php",
             type: "GET",
             data: {search_term:searchTerm,search_types:searchTypes,tag_list:tagList},
             success: function(data) {
+                console.log("Returned results");
                 console.log("data:" + data);
             }
         });

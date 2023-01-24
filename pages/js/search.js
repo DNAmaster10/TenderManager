@@ -20,7 +20,7 @@ function submitSearch() {
             type: "GET",
             data: {search_term:searchTerm,search_types:searchTypes,tag_list:tagList},
             success: function(data) {
-                console.log("data");
+                console.log("data:" + data);
             }
         });
     }

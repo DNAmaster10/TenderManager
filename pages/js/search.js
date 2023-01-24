@@ -1,4 +1,5 @@
 function submitSearch() {
+    console.log("Searching...");
     var searchTerm = document.getElementById("search_input").value;
     var searchTypes = "";
     if (document.getElementById("search_questions").checked) {

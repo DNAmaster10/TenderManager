@@ -7,6 +7,7 @@
         echo ("error:$error");
         die();
     }
+    error_log("Searching");
     if (!isset($_GET["search_types"]) || strlen($_GET["search_types"] < 1)) {
         error("no search types set");
     }

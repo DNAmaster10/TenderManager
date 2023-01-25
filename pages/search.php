@@ -11,16 +11,18 @@
         <link rel="stylesheet" href="/css/search.css">
     </head>
     <body>
-        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php"; ?>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php";         ?>
         <div id="main_container">
             <div id="search_box">
                 <input type="text" id="search_input" onkeyup="submitSearch()">
-                <label for="search_questions">Search Questions</label>
-                <input type="checkbox" id="search_questions">
-                <label for="search_tag">Search Tags</label>
-                <input type="checkbox" id="search_tags">
-                <label for="search_clients">Search Clients</label>
-                <input type="checkbox" id="search_clients">
+                <div id="search_types_container">
+                    <label for="search_questions">Search Questions</label>
+                    <input type="checkbox" id="search_questions">
+                    <label for="search_tag">Search Tags</label>
+                    <input type="checkbox" id="search_tags">
+                    <label for="search_clients">Search Clients</label>
+                    <input type="checkbox" id="search_clients">
+                </div>
                 <div id="tags">
                     <input type="text" id="tag_input" placeholder="Add Tag" onkeyup="getTags()">
                     <div id="tag_container"></div>

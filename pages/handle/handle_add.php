@@ -56,8 +56,9 @@
         }
     }
     else {
+        $year = 0;
         $stmt = $conn->prepare("UPDATE tendors SET year=? WHERE id=?");
-        $stmt->bind_param("ii", 0, $id);
+        $stmt->bind_param("ii", $year, $id);
         $stmt->execute();
         $stmt->close();
     }

@@ -27,6 +27,7 @@ function submitSearch() {
                     console.log(data);
                     var resultsArray = data.split("#-#");
                     for (var i = 0; i < resultsArray.length; i++) {
+                        console.log("1");
                         if (resultsArray[i] != "") {
                             var secondResultArray = resultsArray[i].split("@-@");
                             if (secondResultArray[1] == "question") {

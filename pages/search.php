@@ -25,6 +25,7 @@
                     <input type="checkbox" id="search_clients">
                 </div>
                 <div id="tags">
+                    <label for="tag_input">Tag(s): </label>
                     <input type="text" id="tag_input" placeholder="Add Tag" onkeyup="getTags()">
                     <div id="tag_container"></div>
                     <div id="added_tag_container"></div>

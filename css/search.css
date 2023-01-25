@@ -5,9 +5,25 @@ body {
 #main_container {
     margin: 10px;
     padding: 10px;
+    text-align:  center;
 }
 #search_box {
     border: 2px solid #ccc;
     border-radius: 10px;
     padding: 10px;
+    text-align: center;
+}
+#search_input {
+    margin-bottom: 10px;
+}
+input {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+}
+input:hover {
+    background-color: lightgray;
+}
+input:focus {
+    outline: none;
 }

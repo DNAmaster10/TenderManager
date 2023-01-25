@@ -27,7 +27,7 @@
         if (in_array("questions", $search_types)) {
             if (!$contains_tags) {
                 $param = "%".$_GET["search_term"]."%";
-                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question COLLATE SQL_Latin1_General_Cp1_CI_AS_KI_WI LIKE ?");
+                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question COLLATE SQL_Latin1_General_Cp437_CI_AS_KI_WI LIKE ?");
                 $stmt->bind_param("s", $param);
                 $stmt->execute();
                 $result = $stmt->get_result();

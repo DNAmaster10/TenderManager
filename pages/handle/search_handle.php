@@ -27,7 +27,7 @@
         if (in_array("questions", $search_types)) {
             if (!$contains_tags) {
                 $param = strtoupper("%".$_GET["search_term"]."%");
-                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE UPPER(question) LIKE ?");
+                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question LIKE ?");
                 $stmt->bind_param("s", $param);
                 $stmt->execute();
                 $result = $stmt->get_result();

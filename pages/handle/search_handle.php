@@ -26,8 +26,8 @@
     if (isset($_GET["search_term"])) {
         if (in_array("questions", $search_types)) {
             if (!$contains_tags) {
-                $param = "%".$_GET["search_term"]."%";
-                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question COLLATE utf8mb4_unicode_ci LIKE ?");
+                $param = strtoupper("%".$_GET["search_term"]."%");
+                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE UPPER(question) LIKE ?");
                 $stmt->bind_param("s", $param);
                 $stmt->execute();
                 $result = $stmt->get_result();

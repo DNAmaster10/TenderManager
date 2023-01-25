@@ -30,6 +30,7 @@ function submitSearch() {
                         console.log("1");
                         if (resultsArray[i] != "") {
                             var secondResultArray = resultsArray[i].split("@-@");
+                            console.log(secondResultArray);
                             if (secondResultArray[1] == "question") {
                                 var thirdResultArray = secondResultArray[1].split("-#-");
                                 var ratingText = "";

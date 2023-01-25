@@ -27,7 +27,7 @@
         if (in_array("questions", $search_types)) {
             if (!$contains_tags) {
                 $param = "%".$_GET["search_term"]."%";
-                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question LIKE ?");
+                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE UPPER(question) LIKE UPPER(?)");
                 $stmt->bind_param("s", $param);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -38,10 +38,10 @@
                 $stmt->close();
             }
             else {
-                $statement = "SELECT id,question,client,year,rating FROM tendors WHERE question LIKE ?";
+                $statement = "SELECT id,question,client,year,rating FROM tendors WHERE UPPER(question) LIKE UPPER(?)";
                 $types = "s";
                 for ($i = 0; $i < count($tag_array); $i++) {
-                    $statement .= " AND tags LIKE ?";
+                    $statement .= " AND UPPER(tags) LIKE UPPER(?)";
                     $types .= "s";
                 }
                 $search_array = $tag_array;
@@ -60,7 +60,7 @@
         if (in_array("clients", $search_types)) {
             if (!$contains_tags) {
                 $param = "%".$_GET["search_term"]."%";
-                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE client LIKE ?");
+                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE UPPER(client) LIKE UPPER(?)");
                 $stmt->bind_param("s", $param);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -71,10 +71,10 @@
                 $stmt->close();
             }
             else {
-                $statement = "SELECT id,question,client,year,rating FROM tendors WHERE client LIKE ?";
+                $statement = "SELECT id,question,client,year,rating FROM tendors WHERE UPPER(client) LIKE UPPER(?)";
                 $types = "s";
                 for ($i = 0; $i < count($tag_array); $i++) {
-                    $statement .= " AND tags LIKE ?";
+                    $statement .= " AND UPPER(tags) LIKE UPPER(?)";
                     $types .= "s";
                 }
                 $search_array = $tag_array;
@@ -94,10 +94,10 @@
     }
     else if (isset($_GET["tag_list"]) && strlen($_GET["tag_list"]) > 0) {
         $tag_array = explode("#-#", $_GET["tag_list"]);
-        $statement = "SELECT id,question,client,year,rating FROM tendors WHERE tags LIKE ?";
+        $statement = "SELECT id,question,client,year,rating FROM tendors WHERE UPPER(tags) LIKE UPPER(?)";
         $types = "s";
         for ($i = 1; $i < count($tag_array); $i++) {
-            $statement .= " AND tags LIKE ?";
+            $statement .= " AND UPPER(tags) LIKE UPPER(?)";
             $types .= "s";
         }
         $search_array = $tag_array;

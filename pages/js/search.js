@@ -23,8 +23,53 @@ function submitSearch() {
             type: "GET",
             data: {search_term:searchTerm,search_types:searchTypes,tag_list:tagList},
             success: function(data) {
-                console.log("Returned results");
-                console.log("data:" + data);
+                if (data != "error") {
+                    var resultsArray = data.split("#-#");
+                    for (var i = 0; i < resultsArray.length; i++) {
+                        if (resultsArray[i] != "") {
+                            var secondResultArray = resultsArray.split("@-@");
+                            if (secondResultArray[1] == "question") {
+                                var thirdResultArray = secondResultArray[1].split("-#-");
+                                var ratingText = "";
+                                var rating = parseInt(thirdResultArray[4]);
+                                for (var j = rating; j > 0; j--) {
+                                    rating += "★";
+                                }
+                                for (var j = star + 1; j <= 5; j++) {
+                                    rating += "☆";
+                                }
+                                var element = `
+                                <div id="`+thirdResultArray[0]+`_result_container" class="result_container">
+                                    <p id="`+thirdResultArray[0]+`_p" class="result_p">`+thirdResultArray[1]+`</p>
+                                    <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
+                                </div>
+                                `;
+                                var rootElement = document.getElementById("question_results");
+                                rootElement.innerHTML += element
+                            }
+                            else if (secondResultArray[1] == "client") {
+                                var thirdResultArray = secondResultArray[1].split("-#-");
+                                var ratingText = "";
+                                var rating = parseInt(thirdResultArray[4]);
+                                var rating = parseInt(thirdResultArray[4]);
+                                for (var j = rating; j > 0; j--) {
+                                    rating += "★";
+                                }
+                                for (var j = star + 1; j <= 5; j++) {
+                                    rating += "☆";
+                                }
+                                var element = `
+                                <div id="`+thirdResultArray[0]+`_result_container" class="result_container">
+                                    <p id="`+thirdResultArray[0]+`_p" class="result_p">`+thirdResultArray[1]+`</p>
+                                    <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
+                                </div>
+                                `;
+                                var rootElement = document.getElementById("client_results");
+                                rootElement.innerHTML += element;
+                            }
+                        }
+                    }
+                }
             }
         });
     }

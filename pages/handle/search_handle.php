@@ -4,7 +4,7 @@
     include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
 
     function error($error) {
-        echo ("error:$error");
+        echo ("error");
         die();
     }
     if (!isset($_GET["search_types"]) || strlen($_GET["search_types"] < 1)) {
@@ -65,7 +65,7 @@
                 $stmt->execute();
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {
-                    $return_string .= "#-#client@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
+                    $return_string .= "#-#clientn@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
                 }
                 unset ($result);
                 $stmt->close();
@@ -107,7 +107,7 @@
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
-            $return_string .= "#-#client@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
+            $return_string .= "#-#question@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
         }
         unset($result);
         $stmt->close();

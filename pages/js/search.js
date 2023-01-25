@@ -27,7 +27,7 @@ function submitSearch() {
                     var resultsArray = data.split("#-#");
                     for (var i = 0; i < resultsArray.length; i++) {
                         if (resultsArray[i] != "") {
-                            var secondResultArray = resultsArray.split("@-@");
+                            var secondResultArray = resultsArray[i].split("@-@");
                             if (secondResultArray[1] == "question") {
                                 var thirdResultArray = secondResultArray[1].split("-#-");
                                 var ratingText = "";

@@ -31,7 +31,7 @@ function submitSearch() {
                         if (resultsArray[i] != "") {
                             var secondResultArray = resultsArray[i].split("@-@");
                             console.log(secondResultArray);
-                            if (secondResultArray[1] == "question") {
+                            if (secondResultArray[0] == "question") {
                                 console.log("2")
                                 var thirdResultArray = secondResultArray[1].split("-#-");
                                 var ratingText = "";
@@ -52,7 +52,7 @@ function submitSearch() {
                                 var rootElement = document.getElementById("question_results");
                                 rootElement.innerHTML += element;
                             }
-                            else if (secondResultArray[1] == "client") {
+                            else if (secondResultArray[0] == "client") {
                                 var thirdResultArray = secondResultArray[1].split("-#-");
                                 var ratingText = "";
                                 var rating = parseInt(thirdResultArray[4]);

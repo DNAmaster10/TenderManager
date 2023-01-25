@@ -14,7 +14,8 @@
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php";         ?>
         <div id="main_container">
             <div id="search_box">
-                <input type="text" id="search_input" onkeyup="submitSearch()">
+                <label for="search_input">Search Term: </label>
+                <input type="text" id="search_input" onkeyup="submitSearch()" placeholder="Search Term">
                 <div id="search_types_container">
                     <label for="search_questions">Search Questions</label>
                     <input type="checkbox" id="search_questions">

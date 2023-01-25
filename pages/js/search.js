@@ -32,6 +32,7 @@ function submitSearch() {
                             var secondResultArray = resultsArray[i].split("@-@");
                             console.log(secondResultArray);
                             if (secondResultArray[1] == "question") {
+                                console.log("2")
                                 var thirdResultArray = secondResultArray[1].split("-#-");
                                 var ratingText = "";
                                 var rating = parseInt(thirdResultArray[4]);
@@ -47,8 +48,9 @@ function submitSearch() {
                                     <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
                                 </div>
                                 `;
+                                console.log(element);
                                 var rootElement = document.getElementById("question_results");
-                                rootElement.innerHTML += element
+                                rootElement.innerHTML += element;
                             }
                             else if (secondResultArray[1] == "client") {
                                 var thirdResultArray = secondResultArray[1].split("-#-");

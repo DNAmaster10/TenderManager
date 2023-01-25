@@ -23,6 +23,8 @@ function submitSearch() {
             type: "GET",
             data: {search_term:searchTerm,search_types:searchTypes,tag_list:tagList},
             success: function(data) {
+                document.getElementById("question_results").innerHTML = "";
+                document.getElementById("client_results").innerHTML = "";
                 if (data != "error") {
                     console.log(data);
                     var resultsArray = data.split("#-#");

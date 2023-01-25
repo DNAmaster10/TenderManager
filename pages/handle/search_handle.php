@@ -27,7 +27,7 @@
         if (in_array("questions", $search_types)) {
             if (!$contains_tags) {
                 $param = "%".$_GET["search_term"]."%";
-                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE UPPER(question) LIKE UPPER(?)");
+                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question COLLATE SQL_Latin1_General_Cp1_CI_AS_KI_WI LIKE ?");
                 $stmt->bind_param("s", $param);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -38,10 +38,10 @@
                 $stmt->close();
             }
             else {
-                $statement = "SELECT id,question,client,year,rating FROM tendors WHERE UPPER(question) LIKE UPPER(?)";
+                $statement = "SELECT id,question,client,year,rating FROM tendors WHERE question COLLATE SQL_Latin1_General_Cp1_CI_AS_KI_WI LIKE ?";
                 $types = "s";
                 for ($i = 0; $i < count($tag_array); $i++) {
-                    $statement .= " AND UPPER(tags) LIKE UPPER(?)";
+                    $statement .= " AND tags COLLATE SQL_Latin1_General_Cp1_CI_AS_KI_WI LIKE ?";
                     $types .= "s";
                 }
                 $search_array = $tag_array;

@@ -39,7 +39,7 @@ function submitSearch() {
                                 for (var j = rating; j > 0; j--) {
                                     rating += "★";
                                 }
-                                for (var j = star + 1; j <= 5; j++) {
+                                for (var j = rating + 1; j <= 5; j++) {
                                     rating += "☆";
                                 }
                                 var element = `

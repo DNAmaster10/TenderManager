@@ -15,7 +15,7 @@ function submitSearch() {
         tagList = "false";
     }
     
-    if (!(searchTerm.length < 0 || searchTerm == "" ) && (searchTypes != "")) {
+    if (!(searchTerm.length < 1 && tagList != "false")) {
         console.log("Passed checks");
         $.ajax({
             url: "/pages/handle/search_handle.php",

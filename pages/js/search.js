@@ -37,12 +37,13 @@ function submitSearch() {
                                 var thirdResultArray = secondResultArray[1].split("-#-");
                                 var ratingText = "";
                                 var rating = parseInt(thirdResultArray[4]);
-                                for (var j = rating; j > 0; j--) {
-                                    rating += "★";
+                                for (var j = 0; j <= rating; j++) {
+                                    ratingText += "★";
                                 }
-                                for (var j = rating + 1; j <= 5; j++) {
-                                    rating += "☆";
+                                for (var j = 0; j < 5 - rating; j++) {
+                                    ratingText += "☆";
                                 }
+                                console.log("rating text: " + rating);
                                 var element = `
                                 <div id="`+thirdResultArray[0]+`_result_container" class="result_container">
                                     <p id="`+thirdResultArray[0]+`_p" class="result_p">`+thirdResultArray[1]+`</p>

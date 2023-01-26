@@ -19,8 +19,6 @@
                 <div id="search_types_container">
                     <label for="search_questions">Search Questions</label>
                     <input type="checkbox" id="search_questions">
-                    <label for="search_tag">Search Tags</label>
-                    <input type="checkbox" id="search_tags">
                     <label for="search_clients">Search Clients</label>
                     <input type="checkbox" id="search_clients">
                 </div>

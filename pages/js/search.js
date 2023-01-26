@@ -1,15 +1,14 @@
+document.getElementById("search_questions").checked = true;
+document.getElementById("search_clients").checked = true;
 function submitSearch() {
     console.log("Searching...");
     var searchTerm = document.getElementById("search_input").value;
     var searchTypes = "";
     if (document.getElementById("search_questions").checked) {
-        searchTypes = searchTypes + "questions#-#";
-    }
-    if (document.getElementById("search_tags").checked) {
-        searchTypes = searchTypes + "tags#-#";
+        searchTypes = searchTypes + "questions";
     }
     if (document.getElementById("search_clients").checked) {
-        searchTypes = searchTypes + "clients"
+        searchTypes = searchTypes + "#-#clients"
     }
     var tagList = document.getElementById("tag_list").value;
     if (tagList.length < 1) {

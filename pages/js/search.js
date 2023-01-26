@@ -45,7 +45,7 @@ function submitSearch() {
                                 }
                                 console.log("rating text: " + rating);
                                 var element = `
-                                <div id="`+thirdResultArray[0]+`_result_container" class="result_container">
+                                <div id="`+thirdResultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+thirdResultArray[0]+`')">
                                     <p id="`+thirdResultArray[0]+`_p" class="result_p">`+thirdResultArray[1]+`</p>
                                     <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
                                 </div>
@@ -67,7 +67,7 @@ function submitSearch() {
                                 }
                                 console.log("rating text: " + rating);
                                 var element = `
-                                <div id="`+thirdResultArray[0]+`_result_container" class="result_container">
+                                <div id="`+thirdResultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+thirdResultArray[0]+`')>
                                     <p id="`+thirdResultArray[0]+`_p" class="result_p">`+thirdResultArray[1]+`</p>
                                     <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
                                 </div>
@@ -171,4 +171,7 @@ function removeTag(tagName) {
         `;
         rootElement.innerHTML += element;
     }
+}
+function redirectInfo(id) {
+    window.location.href = "/pages/info.php?id=" + id;
 }

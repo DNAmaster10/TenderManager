@@ -31,12 +31,11 @@
                 </div>
             </div>
             <div id="results_container">
+                <h1 id="question_results_h" class="results_header">Questions</h1>
                 <div id="question_results">
 
                 </div>
-                <div id="tag_results">
-
-                </div>
+                <h1 id="client_results_h" class="results_header">Clients</h1>
                 <div id="client_results">
 
                 </div>

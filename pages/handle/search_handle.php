@@ -74,7 +74,7 @@
                 $stmt->execute();
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {
-                    $return_string .= "#-#clientn@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
+                    $return_string .= "#-#client@-@".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
                 }
                 unset ($result);
                 $stmt->close();

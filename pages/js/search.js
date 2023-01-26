@@ -79,6 +79,10 @@ function submitSearch() {
             }
         });
     }
+    else {
+        document.getElementById("question_results").innerHTML = "";
+        document.getElementById("client_results").innerHTML = "";
+    }
 }
 function getTags() {
     var tagInput = document.getElementById("tag_input").value;

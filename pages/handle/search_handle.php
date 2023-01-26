@@ -24,9 +24,9 @@
         $contains_term = true;
     }
     else {
-        $container_term = false;
+        $contains_term = false;
     }
-    if (!$container_term && !$contains_tags) {
+    if (!$contains_term && !$contains_tags) {
         error("No search term or tag set");
     }
     //Format: #-#type@-@id-#-question#-#type@-@id-#-question#-#

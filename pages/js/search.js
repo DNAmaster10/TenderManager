@@ -58,11 +58,11 @@ function submitSearch() {
                                 var ratingText = "";
                                 var rating = parseInt(thirdResultArray[4]);
                                 var rating = parseInt(thirdResultArray[4]);
-                                for (var j = rating; j > 0; j--) {
-                                    rating += "★";
+                                for (var j = 0; j <= rating; j++) {
+                                    ratingText += "★";
                                 }
-                                for (var j = star + 1; j <= 5; j++) {
-                                    rating += "☆";
+                                for (var j = 0; j < 5 - rating; j++) {
+                                    ratingText += "☆";
                                 }
                                 var element = `
                                 <div id="`+thirdResultArray[0]+`_result_container" class="result_container">

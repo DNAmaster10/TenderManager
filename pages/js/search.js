@@ -64,6 +64,7 @@ function submitSearch() {
                                 for (var j = 0; j < 5 - rating; j++) {
                                     ratingText += "☆";
                                 }
+                                console.log("rating text: " + rating);
                                 var element = `
                                 <div id="`+thirdResultArray[0]+`_result_container" class="result_container">
                                     <p id="`+thirdResultArray[0]+`_p" class="result_p">`+thirdResultArray[1]+`</p>

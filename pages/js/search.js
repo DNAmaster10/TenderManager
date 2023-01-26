@@ -137,6 +137,7 @@ function addTag(tag) {
         }
         document.getElementById("tag_input").value = "";
         document.getElementById("tag_container").innerHTML = "";
+        submitSearch();
 
     }
 }

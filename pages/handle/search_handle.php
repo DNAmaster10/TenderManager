@@ -20,10 +20,19 @@
     else {
         $contains_tags = false;
     }
+    if (isset($_GET["search_term"]) && strlen($_GET["search_term"]) > 0) {
+        $contains_term = true;
+    }
+    else {
+        $container_term = false;
+    }
+    if (!$container_term && !$contains_tags) {
+        error("No search term or tag set");
+    }
     //Format: #-#type@-@id-#-question#-#type@-@id-#-question#-#
     $return_string = "";
     $search_types = explode("#-#", $_GET["search_types"]);
-    if (isset($_GET["search_term"])) {
+    if ($contains_term) {
         if (in_array("questions", $search_types)) {
             if (!$contains_tags) {
                 $param = strtoupper("%".$_GET["search_term"]."%");
@@ -73,11 +82,11 @@
             else {
                 $statement = "SELECT id,question,client,year,rating FROM tendors WHERE client LIKE ?";
                 $types = "s";
+                $search_array = $tag_array;
                 for ($i = 0; $i < count($tag_array); $i++) {
                     $statement .= " AND tags LIKE ?";
                     $types .= "s";
                 }
-                $search_array = $tag_array;
                 array_unshift($search_array, "%".$_GET["search_term"]."%");
                 $stmt = $conn->prepare($statement);
                 $stmt->bind_param($types, ...$search_array);
@@ -92,16 +101,14 @@
         }
         echo ($return_string);
     }
-    else if (isset($_GET["tag_list"]) && strlen($_GET["tag_list"]) > 0) {
-        $tag_array = explode("#-#", $_GET["tag_list"]);
+    else if ($contains_tags && !$contains_term) {
         $statement = "SELECT id,question,client,year,rating FROM tendors WHERE tags LIKE ?";
-        $types = "s";
+        $types = "";
         for ($i = 1; $i < count($tag_array); $i++) {
             $statement .= " AND tags LIKE ?";
             $types .= "s";
         }
         $search_array = $tag_array;
-        array_unshift($search_array, "%".$_GET["search_term"]."%");
         $stmt = $conn->prepare($statement);
         $stmt->bind_param($types, ...$search_array);
         $stmt->execute();

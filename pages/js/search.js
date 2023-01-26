@@ -37,7 +37,7 @@ function submitSearch() {
                                 var thirdResultArray = secondResultArray[1].split("-#-");
                                 var ratingText = "";
                                 var rating = parseInt(thirdResultArray[4]);
-                                for (var j = 0; j <= rating; j++) {
+                                for (var j = 0; j < rating; j++) {
                                     ratingText += "★";
                                 }
                                 for (var j = 0; j < 5 - rating; j++) {
@@ -59,7 +59,7 @@ function submitSearch() {
                                 var ratingText = "";
                                 var rating = parseInt(thirdResultArray[4]);
                                 var rating = parseInt(thirdResultArray[4]);
-                                for (var j = 0; j <= rating; j++) {
+                                for (var j = 0; j < rating; j++) {
                                     ratingText += "★";
                                 }
                                 for (var j = 0; j < 5 - rating; j++) {

@@ -171,7 +171,10 @@ function removeTag(tagName) {
         `;
         rootElement.innerHTML += element;
     }
+    submitSearch();
 }
 function redirectInfo(id) {
     window.location.href = "/pages/info.php?id=" + id;
 }
+var oldURL = document.referrer;
+alert(oldURL);

@@ -3,6 +3,12 @@ document.getElementById("search_clients").checked = true;
 function submitSearch() {
     console.log("Searching...");
     var searchTerm = document.getElementById("search_input").value;
+    if (searchTerm.length < 1) {
+        document.cookie = "lastSearchTerm=none";
+    }
+    else {
+        document.cookie = "lastSearchTerm=" + searchTerm;
+    }
     var searchTypes = "";
     if (document.getElementById("search_questions").checked) {
         searchTypes = searchTypes + "questions";
@@ -10,10 +16,12 @@ function submitSearch() {
     if (document.getElementById("search_clients").checked) {
         searchTypes = searchTypes + "#-#clients"
     }
+    document.cookie = "lastSearchTypes=" + searchTypes;
     var tagList = document.getElementById("tag_list").value;
     if (tagList.length < 1) {
         tagList = "false";
     }
+    document.cookie = "lastTagList=" + tagList;
     
     if (!(searchTerm.length < 1 && tagList != "false")) {
         console.log("Passed checks");
@@ -178,3 +186,12 @@ function redirectInfo(id) {
 }
 var oldURL = document.referrer;
 alert(oldURL);
+console.log(document.cookie);
+if (oldURL.length > 1) {
+    var oldUrlArray = oldURL.split("/");
+    if (oldUrlArray.length > 3) {
+        if (oldUrlArray[3] == "info.php") {
+
+        }
+    }
+}

@@ -2,6 +2,13 @@
     session_start();
     include $_SERVER["DOCUMENT_ROOT"]."/includes/dbh.php";
     include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
+    if (isset($_SESSION["last_page"])) {
+        $last_page = $_SESSION["last_page"];
+        unset($last_page);
+    }
+    else {
+        $last_page = "null";
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,6 +18,7 @@
         <link rel="stylesheet" href="/css/search.css">
     </head>
     <body>
+        <input type="hidden" id="last_page" value="<?php echo ($last_page); ?>"> 
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php";         ?>
         <div id="main_container">
             <div id="search_box">

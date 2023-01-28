@@ -202,41 +202,33 @@ function getCookie(cookieName) {
 var oldURL = document.referrer;
 alert(oldURL);
 console.log(document.cookie);
-if (oldURL.length > 1) {
-    console.log("Got to 1");
-    var oldUrlArray = oldURL.split("/");
-    if (oldUrlArray.length > 3) {
-        console.log("2");
-        console.log(oldUrlArray);
-        if (oldUrlArray[3] == "info.php") {
-            console.log("3");
-            var lastSearchTypes = getCookie("lastSearchTypes");
-            if (lastSearchTypes.length > 0) {
-                console.log("4");
-                if (lastSearchTypes.includes("questions")) {
-                    document.getElementById("search_questions").checked = true;
-                    console.log("5");
-                }
-                else {
-                    document.getElementById("search_questions").checked = false;
-                }
-                if (lastSearchTypes.includes("clients")) {
-                    document.getElementById("search_clients").checked = true;
-                    console.log("6");
-                }
-                else {
-                    document.getElementById("clients").checked = false;
-                }
-                var lastSearchTerm = getCookie("lastSearchTerm");
-                console.log("Last search: " + lastSearchTerm);
-                document.getElementById("search_input").value = lastSearchTerm;
-                var lastTagList = getCookie("lastTagList");
-                var lastTagListArray = lastTagList.split("#-#");
-                for (var i = 0; i < lastTagListArray.length; i++) {
-                    addTag(lastTagListArray[i], false);
-                }
-                submitSearch();
-            }
+if (document.getElementById("last_page").value == "info") {
+    console.log("3");
+    var lastSearchTypes = getCookie("lastSearchTypes");
+    if (lastSearchTypes.length > 0) {
+        console.log("4");
+        if (lastSearchTypes.includes("questions")) {
+            document.getElementById("search_questions").checked = true;
+            console.log("5");
         }
+        else {
+            document.getElementById("search_questions").checked = false;
+        }
+        if (lastSearchTypes.includes("clients")) {
+            document.getElementById("search_clients").checked = true;
+            console.log("6");
+        }
+        else {
+            document.getElementById("clients").checked = false;
+        }
+        var lastSearchTerm = getCookie("lastSearchTerm");
+        console.log("Last search: " + lastSearchTerm);
+        document.getElementById("search_input").value = lastSearchTerm;
+        var lastTagList = getCookie("lastTagList");
+        var lastTagListArray = lastTagList.split("#-#");
+        for (var i = 0; i < lastTagListArray.length; i++) {
+            addTag(lastTagListArray[i], false);
+        }
+        submitSearch();
     }
 }

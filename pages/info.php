@@ -29,6 +29,8 @@
     }
     unset($result);
     $stmt->close();
+
+    $_SESSION["last_page"] = "info";
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,7 +50,7 @@
                 </form>
             </div>
             <div id="info_container">
-                
+
             </div>
         </div>
     </body>

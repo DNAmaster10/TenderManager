@@ -48,8 +48,10 @@ function submitSearch() {
                                 }
                                 if (searchTerm.length > 0) {
                                     var innerTextArray = thirdResultArray[1].split();
+                                    console.log("The array for inner text is " + innerTextArray);
                                     var innerText = innerTextArray.join("<mark>" + searchTerm + "</mark>");
                                     console.log("Added marks for search term" + searchTerm);
+                                    console.log("Should now be " + innerText);
                                 }
                                 else {
                                     var innerText = thirdResultArray[1];

@@ -47,9 +47,7 @@ function submitSearch() {
                                     ratingText += "☆";
                                 }
                                 if (searchTerm.length > 0) {
-                                    var innerText = thirdResultArray[1].replace("/" + searchTerm + "/ig", function(match) {
-                                        return "<mark>" + match + "</mark>";
-                                    });
+                                    var innerText = thirdResultArray[1].replace("/" + searchTerm + "/ig", "#$&#");
                                 }
                                 else {
                                     innerText = thirdResultArray[1]

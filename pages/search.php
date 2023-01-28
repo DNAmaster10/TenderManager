@@ -3,8 +3,14 @@
     include $_SERVER["DOCUMENT_ROOT"]."/includes/dbh.php";
     include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
     if (isset($_SESSION["last_page"])) {
-        $last_page = $_SESSION["last_page"];
-        unset($last_page);
+        if (strlen($_SESSION["last_page"]) < 1) {
+            $last_page = "null";
+            unset($_SESSION["last_page"]);
+        }
+        else {
+            $last_page = $_SESSION["last_page"];
+            unset($_SESSION["last_page"]);
+        }
     }
     else {
         $last_page = "null";

@@ -47,7 +47,10 @@ function submitSearch() {
                                     ratingText += "☆";
                                 }
                                 if (searchTerm.length > 0) {
-                                    var innerText = thirdResultArray[1].replace("/" + searchTerm + "/ig", "#$&#");
+                                    var re = new RegExp("/" + searchTerm + "/ig");
+                                    var innerText = thirdResultArray[1].replace(re, function(match){
+                                        return "<mark>" + match + "</mark>";
+                                    });
                                 }
                                 else {
                                     innerText = thirdResultArray[1]
@@ -73,7 +76,8 @@ function submitSearch() {
                                     ratingText += "☆";
                                 }
                                 if (searchTerm.length > 0) {
-                                    var innerText = thirdResultArray[1].replace("/" + searchTerm + "/ig", function(match) {
+                                    var re = new RegExp("/" + searchTerm + "/ig");
+                                    var innerText = thirdResultArray[1].replace(re, function(match){
                                         return "<mark>" + match + "</mark>";
                                     });
                                 }

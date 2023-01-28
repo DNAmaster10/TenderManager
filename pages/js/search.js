@@ -207,6 +207,7 @@ if (oldURL.length > 1) {
     var oldUrlArray = oldURL.split("/");
     if (oldUrlArray.length > 3) {
         console.log("2");
+        console.log(oldUrlArray);
         if (oldUrlArray[3] == "info.php") {
             console.log("3");
             var lastSearchTypes = getCookie("lastSearchTypes");

@@ -32,9 +32,9 @@
                 <input type="text" id="search_input" onkeyup="submitSearch()" placeholder="Search Term">
                 <div id="search_types_container">
                     <label for="search_questions">Search Questions</label>
-                    <input type="checkbox" id="search_questions">
+                    <input type="checkbox" id="search_questions" onclick="submitSearch()">
                     <label for="search_clients">Search Clients</label>
-                    <input type="checkbox" id="search_clients">
+                    <input type="checkbox" id="search_clients" onclick="submitSearch()">
                 </div>
                 <div id="tags">
                     <label for="tag_input">Tag(s): </label>

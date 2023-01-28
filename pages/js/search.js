@@ -46,16 +46,19 @@ function submitSearch() {
                                 for (var j = 0; j < 5 - rating; j++) {
                                     ratingText += "☆";
                                 }
+                                if (searchTerm.length > 0) {
+                                    var innerTextArray = thirdResultArray[1].split();
+                                    var innerText = innerTextArray.join("<mark>" + searchTerm + "</mark>");
+                                }
+                                else {
+                                    var innerText = thirdResultArray[1];
+                                }
                                 var element = `
                                 <div id="`+thirdResultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+thirdResultArray[0]+`')">
-                                    <p id="`+thirdResultArray[0]+`_p" class="result_p">`+thirdResultArray[1]+`</p>
+                                    <p id="`+thirdResultArray[0]+`_p" class="result_p">`+innerText+`</p>
                                     <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
                                 </div>
                                 `;
-                                if (searchTerm.length > 0) {
-                                    var elementArray = element.split(searchTerm);
-                                    element = elementArray.join("<mark>" + searchTerm + "</mark>")
-                                }
                                 var rootElement = document.getElementById("question_results");
                                 rootElement.innerHTML += element;
                             }
@@ -70,16 +73,19 @@ function submitSearch() {
                                 for (var j = 0; j < 5 - rating; j++) {
                                     ratingText += "☆";
                                 }
+                                if (searchTerm.length > 0) {
+                                    var innerTextArray = thirdResultArray[1].split();
+                                    var innerText = innerTextArray.join("<mark>" + searchTerm + "</mark>");
+                                }
+                                else {
+                                    var innerText = thirdResultArray[1];
+                                }
                                 var element = `
                                 <div id="`+thirdResultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+thirdResultArray[0]+`')>
-                                    <p id="`+thirdResultArray[0]+`_p" class="result_p">`+thirdResultArray[1]+`</p>
+                                    <p id="`+thirdResultArray[0]+`_p" class="result_p">`+innerText+`</p>
                                     <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
                                 </div>
                                 `;
-                                if (searchTerm.length > 0) {
-                                    var elementArray = element.split(searchTerm);
-                                    element = elementArray.join("<mark>" + searchTerm + "</mark>")
-                                }
                                 var rootElement = document.getElementById("client_results");
                                 rootElement.innerHTML += element;
                             }

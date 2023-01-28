@@ -190,8 +190,10 @@ function getCookie(cookieName) {
     var cookieValue = "";
     var cookies = document.cookie;
     var cookieArray = cookies.split(";")
+    console.log(cookieArray);
     for (var i = 0; i < cookieArray.length; i++) {
         var currentCookie = cookieArray[i].split("=")
+        console.log(currentCookie);
         if (currentCookie[0] == cookieName) {
             cookieValue = currentCookie[1];
             return(cookieValue);

@@ -1,7 +1,6 @@
 document.getElementById("search_questions").checked = true;
 document.getElementById("search_clients").checked = true;
 function submitSearch() {
-    console.log("Searching...");
     var searchTerm = document.getElementById("search_input").value;
     if (searchTerm.length < 1) {
         document.cookie = "lastSearchTerm=none";
@@ -24,7 +23,6 @@ function submitSearch() {
     document.cookie = "lastTagList=" + tagList;
     
     if (!(searchTerm.length < 1 && tagList != "false")) {
-        console.log("Passed checks");
         $.ajax({
             url: "/pages/handle/search_handle.php",
             type: "GET",
@@ -33,15 +31,11 @@ function submitSearch() {
                 document.getElementById("question_results").innerHTML = "";
                 document.getElementById("client_results").innerHTML = "";
                 if (data != "error") {
-                    console.log(data);
                     var resultsArray = data.split("#-#");
                     for (var i = 0; i < resultsArray.length; i++) {
-                        console.log("1");
                         if (resultsArray[i] != "") {
                             var secondResultArray = resultsArray[i].split("@-@");
-                            console.log(secondResultArray);
                             if (secondResultArray[0] == "question") {
-                                console.log("2")
                                 var thirdResultArray = secondResultArray[1].split("-#-");
                                 var ratingText = "";
                                 var rating = parseInt(thirdResultArray[4]);
@@ -51,14 +45,12 @@ function submitSearch() {
                                 for (var j = 0; j < 5 - rating; j++) {
                                     ratingText += "☆";
                                 }
-                                console.log("rating text: " + rating);
                                 var element = `
                                 <div id="`+thirdResultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+thirdResultArray[0]+`')">
                                     <p id="`+thirdResultArray[0]+`_p" class="result_p">`+thirdResultArray[1]+`</p>
                                     <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
                                 </div>
                                 `;
-                                console.log(element);
                                 var rootElement = document.getElementById("question_results");
                                 rootElement.innerHTML += element;
                             }
@@ -73,7 +65,6 @@ function submitSearch() {
                                 for (var j = 0; j < 5 - rating; j++) {
                                     ratingText += "☆";
                                 }
-                                console.log("rating text: " + rating);
                                 var element = `
                                 <div id="`+thirdResultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+thirdResultArray[0]+`')>
                                     <p id="`+thirdResultArray[0]+`_p" class="result_p">`+thirdResultArray[1]+`</p>
@@ -190,10 +181,8 @@ function getCookie(cookieName) {
     var cookieValue = "";
     var cookies = document.cookie;
     var cookieArray = cookies.split(";")
-    console.log(cookieArray);
     for (var i = 0; i < cookieArray.length; i++) {
         var currentCookie = cookieArray[i].split("=")
-        console.log(currentCookie);
         if (currentCookie[0].replace(" ", "") == cookieName) {
             cookieValue = currentCookie[1];
             return(cookieValue);

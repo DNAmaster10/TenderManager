@@ -49,9 +49,11 @@ function submitSearch() {
                                 if (searchTerm.length > 0) {
                                     var innerTextArray = thirdResultArray[1].split();
                                     var innerText = innerTextArray.join("<mark>" + searchTerm + "</mark>");
+                                    console.log("Added marks for search term" + searchTerm);
                                 }
                                 else {
                                     var innerText = thirdResultArray[1];
+                                    console.log("Did not add marks for search term " + searchTerm)
                                 }
                                 var element = `
                                 <div id="`+thirdResultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+thirdResultArray[0]+`')">

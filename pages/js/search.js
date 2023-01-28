@@ -8,13 +8,14 @@ function submitSearch() {
     else {
         document.cookie = "lastSearchTerm=" + searchTerm;
     }
-    var searchTypes = "";
+    var searchTypesArray = [];
     if (document.getElementById("search_questions").checked) {
-        searchTypes = searchTypes + "questions";
+        searchTypesArray.push("questions");
     }
     if (document.getElementById("search_clients").checked) {
-        searchTypes = searchTypes + "#-#clients"
+        searchTypesArray.push("clients");
     }
+    var searchTypes = searchTypesArray.join("#-#");
     document.cookie = "lastSearchTypes=" + searchTypes;
     var tagList = document.getElementById("tag_list").value;
     if (tagList.length < 1) {

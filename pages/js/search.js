@@ -52,6 +52,10 @@ function submitSearch() {
                                     <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
                                 </div>
                                 `;
+                                if (searchTerm.length > 0) {
+                                    var elementArray = element.split(searchTerm);
+                                    element = elementArray.join("<mark>" + searchTerm + "</mark>")
+                                }
                                 var rootElement = document.getElementById("question_results");
                                 rootElement.innerHTML += element;
                             }
@@ -72,6 +76,10 @@ function submitSearch() {
                                     <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
                                 </div>
                                 `;
+                                if (searchTerm.length > 0) {
+                                    var elementArray = element.split(searchTerm);
+                                    element = elementArray.join("<mark>" + searchTerm + "</mark>")
+                                }
                                 var rootElement = document.getElementById("client_results");
                                 rootElement.innerHTML += element;
                             }

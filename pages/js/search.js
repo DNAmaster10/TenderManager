@@ -47,10 +47,8 @@ function submitSearch() {
                                     ratingText += "☆";
                                 }
                                 if (searchTerm.length > 0) {
-                                    var re = new RegExp("/" + searchTerm + "/ig");
-                                    var innerText = thirdResultArray[1].replace(re, function(match){
-                                        return "<mark>" + match + "</mark>";
-                                    });
+                                    var re = new RegExp(searchTerm, "gi");
+                                    var innerText = thirdResultArray[1].replace(re, "<mark>$&</mark>");
                                 }
                                 else {
                                     innerText = thirdResultArray[1]
@@ -76,10 +74,8 @@ function submitSearch() {
                                     ratingText += "☆";
                                 }
                                 if (searchTerm.length > 0) {
-                                    var re = new RegExp("/" + searchTerm + "/ig");
-                                    var innerText = thirdResultArray[1].replace(re, function(match){
-                                        return "<mark>" + match + "</mark>";
-                                    });
+                                    var re = new RegExp(searchTerm, "gi");
+                                    var innerText = thirdResultArray[1].replace(re, "<mark>$&</mark>");
                                 }
                                 else {
                                     innerText = thirdResultArray[1]

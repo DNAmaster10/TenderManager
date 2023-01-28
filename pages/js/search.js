@@ -47,15 +47,12 @@ function submitSearch() {
                                     ratingText += "☆";
                                 }
                                 if (searchTerm.length > 0) {
-                                    var innerTextArray = thirdResultArray[1].split();
-                                    console.log("The array for inner text is " + innerTextArray);
-                                    var innerText = innerTextArray.join("<mark>" + searchTerm + "</mark>");
-                                    console.log("Added marks for search term" + searchTerm);
-                                    console.log("Should now be " + innerText);
+                                    var innerText = thirdResultArray[1].replace("/" + searchTerm + "/ig", function(match) {
+                                        return "<mark>" + match + "</mark>";
+                                    });
                                 }
                                 else {
-                                    var innerText = thirdResultArray[1];
-                                    console.log("Did not add marks for search term " + searchTerm)
+                                    innerText = thirdResultArray[1]
                                 }
                                 var element = `
                                 <div id="`+thirdResultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+thirdResultArray[0]+`')">
@@ -78,11 +75,12 @@ function submitSearch() {
                                     ratingText += "☆";
                                 }
                                 if (searchTerm.length > 0) {
-                                    var innerTextArray = thirdResultArray[1].split();
-                                    var innerText = innerTextArray.join("<mark>" + searchTerm + "</mark>");
+                                    var innerText = thirdResultArray[1].replace("/" + searchTerm + "/ig", function(match) {
+                                        return "<mark>" + match + "</mark>";
+                                    });
                                 }
                                 else {
-                                    var innerText = thirdResultArray[1];
+                                    innerText = thirdResultArray[1]
                                 }
                                 var element = `
                                 <div id="`+thirdResultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+thirdResultArray[0]+`')>

@@ -121,7 +121,7 @@ function getTags() {
         document.getElementById("tag_container").innerHTML = "";
     }
 }
-function addTag(tag) {
+function addTag(tag, submit=true) {
     if (tag.length > 0) {
         var tagArray = document.getElementById("tag_list").value;
         if (tagArray.length < 1) {
@@ -151,7 +151,9 @@ function addTag(tag) {
         }
         document.getElementById("tag_input").value = "";
         document.getElementById("tag_container").innerHTML = "";
-        submitSearch();
+        if (submit) {
+            submitSearch();
+        }
 
     }
 }
@@ -184,6 +186,19 @@ function removeTag(tagName) {
 function redirectInfo(id) {
     window.location.href = "/pages/info.php?id=" + id;
 }
+function getCookie(cookieName) {
+    var cookieValue = "";
+    var cookies = document.cookie;
+    var cookieArray = cookies.split(";")
+    for (var i = 0; i < cookieArray.length; i++) {
+        var currentCookie = cookieArray[i].split("=")
+        if (currentCookie[0] == cookieName) {
+            cookieValue = currentCookie[1];
+            return(cookieValue);
+        }
+    }
+    return(cookieValue);
+}
 var oldURL = document.referrer;
 alert(oldURL);
 console.log(document.cookie);
@@ -191,7 +206,23 @@ if (oldURL.length > 1) {
     var oldUrlArray = oldURL.split("/");
     if (oldUrlArray.length > 3) {
         if (oldUrlArray[3] == "info.php") {
-
+            var lastSearchTypes = getCookie("lastSearchTypes");
+            if (lastSearchTypes.length > 0) {
+                if (lastSearchTypes.includes("questions")) {
+                    document.getElementById("search_questions").checked = true;
+                }
+                if (lastSearchTypes.includes("clients")) {
+                    document.getElementById("search_clients").checked = true;
+                }
+                var lastSearchTerm = getCookie("lastSearchTerm");
+                document.getElementById("search_input").value = lastSearchTerm;
+                var lastTagList = getCookie("lastTagList");
+                var lastTagListArray = lastTagList.split("#-#");
+                for (var i = 0; i < lastTagListArray.length; i++) {
+                    addTag(lastTagListArray[i], false);
+                }
+                submitSearch();
+            }
         }
     }
 }

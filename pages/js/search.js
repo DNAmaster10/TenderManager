@@ -210,7 +210,7 @@ if (document.getElementById("last_page").value == "info") {
             console.log("6");
         }
         else {
-            document.getElementById("clients").checked = false;
+            document.getElementById("search_clients").checked = false;
         }
         var lastSearchTerm = getCookie("lastSearchTerm");
         console.log("Last search: " + lastSearchTerm);

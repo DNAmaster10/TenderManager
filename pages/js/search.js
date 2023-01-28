@@ -51,7 +51,7 @@ function submitSearch() {
                                     var innerText = thirdResultArray[1].replace(re, "<mark>$&</mark>");
                                 }
                                 else {
-                                    innerText = thirdResultArray[1]
+                                    innerText = thirdResultArray[1];
                                 }
                                 var element = `
                                 <div id="`+thirdResultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+thirdResultArray[0]+`')">
@@ -78,10 +78,10 @@ function submitSearch() {
                                     var innerText = thirdResultArray[1].replace(re, "<mark>$&</mark>");
                                 }
                                 else {
-                                    innerText = thirdResultArray[1]
+                                    innerText = thirdResultArray[1];
                                 }
                                 var element = `
-                                <div id="`+thirdResultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+thirdResultArray[0]+`')>
+                                <div id="`+thirdResultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+thirdResultArray[0]+`')">
                                     <p id="`+thirdResultArray[0]+`_p" class="result_p">`+innerText+`</p>
                                     <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
                                 </div>

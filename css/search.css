@@ -61,3 +61,8 @@ input:focus {
 .rating_p {
     margin: 2px;
 }
+mark {
+    background-color: lime;
+    border-radius: 7px;
+    color: purple;
+}

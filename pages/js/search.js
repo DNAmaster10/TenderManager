@@ -194,7 +194,7 @@ function getCookie(cookieName) {
     for (var i = 0; i < cookieArray.length; i++) {
         var currentCookie = cookieArray[i].split("=")
         console.log(currentCookie);
-        if (currentCookie[0] == cookieName) {
+        if (currentCookie[0].replace(" ", "") == cookieName) {
             cookieValue = currentCookie[1];
             return(cookieValue);
         }

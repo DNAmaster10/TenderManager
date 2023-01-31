@@ -1,6 +1,10 @@
 document.getElementById("search_questions").checked = true;
 document.getElementById("search_clients").checked = true;
 function submitSearch() {
+    document.getElementById("question_ammount").value = "0";
+    document.getElementById("client_ammount").value = "0";
+    var questionAmmount = 0;
+    var clientAmmount = 0;
     var searchTerm = document.getElementById("search_input").value;
     if (searchTerm.length < 1) {
         document.cookie = "lastSearchTerm=none";
@@ -61,6 +65,7 @@ function submitSearch() {
                                 `;
                                 var rootElement = document.getElementById("question_results");
                                 rootElement.innerHTML += element;
+                                questionAmmount++;
                             }
                             else if (secondResultArray[0] == "client") {
                                 var thirdResultArray = secondResultArray[1].split("-#-");
@@ -88,8 +93,23 @@ function submitSearch() {
                                 `;
                                 var rootElement = document.getElementById("client_results");
                                 rootElement.innerHTML += element;
+                                clientAmmount++;
                             }
                         }
+                    }
+                    document.getElementById("question_ammount").value = questionAmmount + "";
+                    document.getElementById("client_ammount").value = clientAmmount + "";
+                    if (questionAmmount > 9) {
+                        var rootElement = document.getElementById("question_results");
+                        rootElement.innerHTML += `
+                            <button type="button" id="load_more_q_button" onclick="loadMoreQuestion()">Load More</button>
+                        `;
+                    }
+                    if (clientAmmount > 9) {
+                        var rootElement = document.getElementById("client_results");
+                        rootElement.innerHTML += `
+                            <button type="button" id="load_more_c_button" onclick="loadMoreClient()">Load More</button>
+                        `;
                     }
                 }
             }
@@ -204,6 +224,27 @@ function getCookie(cookieName) {
         }
     }
     return(cookieValue);
+}
+function loadMoreQuestion() {
+    var searchTerm = document.getElementById("search_input").value;
+    if (searchTerm.length < 1) {
+        searchTerm = "none-null";
+    }
+    var tags = document.getElementById("tag_list").value;
+    if (tags.length < 1) {
+        tags = "none-null";
+    }
+    var questionAmmount = document.getElementById("question_ammount");
+    if (searchTerm != "none-null" || tags != "none-null") {
+        $.ajax({
+            url: "/pages/handle/get_questions_handle.php",
+            type: "GET",
+            data: {search_term:searchTerm,tags:tags,question_ammount:questionAmmount},
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    }
 }
 var oldURL = document.referrer;
 alert(oldURL);

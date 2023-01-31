@@ -45,6 +45,8 @@
                 </div>
             </div>
             <div id="results_container">
+                <input type="hidden" id="question_ammount" value="0">
+                <input type="hidden" id="client_ammount" value="0">
                 <h1 id="question_results_h" class="results_header">Questions</h1>
                 <div id="question_results">
 

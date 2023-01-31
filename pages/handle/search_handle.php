@@ -36,7 +36,7 @@
         if (in_array("questions", $search_types)) {
             if (!$contains_tags) {
                 $param = strtoupper("%".$_GET["search_term"]."%");
-                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question LIKE ?");
+                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question LIKE ? LIMIT 10");
                 $stmt->bind_param("s", $param);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -53,6 +53,7 @@
                     $statement .= " AND tags LIKE ?";
                     $types .= "s";
                 }
+                $statement .= " LIMIT 10";
                 $search_array = $tag_array;
                 array_unshift($search_array, "%".$_GET["search_term"]."%");
                 $stmt = $conn->prepare($statement);
@@ -69,7 +70,7 @@
         if (in_array("clients", $search_types)) {
             if (!$contains_tags) {
                 $param = "%".$_GET["search_term"]."%";
-                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE client LIKE ?");
+                $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE client LIKE ? LIMIT 10");
                 $stmt->bind_param("s", $param);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -87,6 +88,7 @@
                     $statement .= " AND tags LIKE ?";
                     $types .= "s";
                 }
+                $statement .= " LIMIT 10";
                 array_unshift($search_array, "%".$_GET["search_term"]."%");
                 $stmt = $conn->prepare($statement);
                 $stmt->bind_param($types, ...$search_array);
@@ -108,6 +110,7 @@
             $statement .= " AND tags LIKE ?";
             $types .= "s";
         }
+        $statement .= " LIMIT 10";
         $search_array = $tag_array;
         $stmt = $conn->prepare($statement);
         $stmt->bind_param($types, ...$search_array);

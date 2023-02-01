@@ -14,13 +14,13 @@
     else {
         $question_ammount = intval($_GET["question_ammount"]);
     }
-    if (!isset($_GET["search_term"]) || strlen($_GET["search_term"]) < 1) {
+    if (!isset($_GET["search_term"]) || strlen($_GET["search_term"]) < 1 || $_GET["search_term"] == "none-null") {
         $contains_term = false;
     }
     else {
         $contains_term = true;
     }
-    if (!isset($_GET["tags"]) || strlen($_GET["tags"]) < 1) {
+    if (!isset($_GET["tags"]) || strlen($_GET["tags"]) < 1 || $_GET["tags"] == "none-null") {
         $contains_tags = false;
     }
     else {

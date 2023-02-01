@@ -234,7 +234,7 @@ function loadMoreQuestion() {
     if (tags.length < 1) {
         tags = "none-null";
     }
-    var questionAmmount = document.getElementById("question_ammount");
+    var questionAmmount = document.getElementById("question_ammount").value;
     if (searchTerm != "none-null" || tags != "none-null") {
         $.ajax({
             url: "/pages/handle/get_questions_handle.php",
@@ -246,8 +246,6 @@ function loadMoreQuestion() {
         });
     }
 }
-var oldURL = document.referrer;
-alert(oldURL);
 console.log(document.cookie);
 if (document.getElementById("last_page").value == "info") {
     console.log("3");

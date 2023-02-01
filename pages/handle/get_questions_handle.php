@@ -85,7 +85,7 @@
         unset($result);
         $stmt->close();
     }
-    if (!isset($return_string) && strlen($return_string) < 1) {
+    if (!isset($return_string) || strlen($return_string) < 1) {
         echo ("0");
     }
     else {

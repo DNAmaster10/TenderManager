@@ -254,6 +254,7 @@ function loadMoreQuestion() {
                         }
                         var resultArray = returnArray[i].split("-#-");
                         var ratingText = "";
+                        console.log(returnArray[4]);
                         var rating = parseInt(returnArray[4]);
                         for (var j = 0; j < rating; j++) {
                             ratingText += "★";

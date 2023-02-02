@@ -249,6 +249,9 @@ function loadMoreQuestion() {
                     var addedQuestionAmmount = 0;
                     var returnArray = data.split("#-#");
                     for (var i = 0; i < returnArray.length; i++) {
+                        if (returnArray[i] == "") {
+                            continue;
+                        }
                         var resultArray = returnArray[i].split("-#-");
                         var ratingText = "";
                         var rating = parseInt(returnArray[4]);

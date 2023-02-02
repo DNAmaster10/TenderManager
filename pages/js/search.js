@@ -254,15 +254,13 @@ function loadMoreQuestion() {
                         }
                         var resultArray = returnArray[i].split("-#-");
                         var ratingText = "";
-                        console.log(returnArray[4]);
-                        var rating = parseInt(returnArray[4]);
+                        var rating = parseInt(resultArray[4]);
                         for (var j = 0; j < rating; j++) {
                             ratingText += "★";
                         }
                         for (var j = 0; j < 5 - rating; j++) {
                             ratingText += "☆";
                         }
-                        console.log(rating);
                         if (searchTerm.length > 0) {
                             var re = new RegExp(searchTerm, "gi");
                             var innerText = resultArray[1].replace(re, "<mark>$&</mark>");

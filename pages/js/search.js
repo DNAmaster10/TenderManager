@@ -261,6 +261,7 @@ function loadMoreQuestion() {
                         for (var j = 0; j < 5 - rating; j++) {
                             ratingText += "☆";
                         }
+                        console.log(rating);
                         if (searchTerm.length > 0) {
                             var re = new RegExp(searchTerm, "gi");
                             var innerText = resultArray[1].replace(re, "<mark>$&</mark>");

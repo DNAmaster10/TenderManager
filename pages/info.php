@@ -47,8 +47,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>CHANGE LATER</title>
+        <title>Info</title>
         <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/info.css">
     </head>
     <body>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php"; ?>
@@ -63,7 +64,8 @@
                         `);
                     }
                 ?>
-                <form id="edit_form" class="action_button_form">
+                <form id="edit_form" class="action_button_form" method="GET" action="/pages/edit.php">
+                    <input type="hidden" id="id_hidden_input" value="<?php echo($_GET["id"]); ?>" name="id">
                     <input type="submit" id="edit_button" value="Edit" class="action_button">
                 </form>
             </div>

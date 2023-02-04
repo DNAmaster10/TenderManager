@@ -30,7 +30,7 @@
     }
 
     $return_string = "";
-    if ($cotnains_term && $contains_tags) {
+    if ($contains_term && $contains_tags) {
         $types = "s";
         $statement = "SELECT id,question,client,year,rating FROM tendors WHERE client LIKE ?";
         for ($i = 0; $i < count($tag_array); $i++) {
@@ -41,9 +41,6 @@
         $types .= "i";
         array_unshift($tag_array, "%".$_GET["search_term"]."%");
         array_push($tag_array, $client_ammount);
-        error_log($statement);
-        error_log($types);
-        error_log(implode(" ",$tag_array));
         $stmt = $conn->prepare($statement);
         $stmt->bind_param($types, ...$tag_array);
         $stmt->execute();

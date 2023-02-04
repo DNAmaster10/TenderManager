@@ -40,18 +40,20 @@
     <body>
         <input type="hidden" id="old_rating" value="<?php echo(strval($rating)); ?>">
         <input type="hidden" id="old_tags" value="<?php echo($tags); ?>">
+        <input type="hidden" id="old_answer" value="<?php echo($answer); ?>">
+        <input type="hidden" id="old_notes" value="<?php echo($notes) ?>">
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php"; ?>
         <div id="main_container">
             <h2 id="essential_header" class="sub_head">Essential details</h2>
             <br>
             <input type="text" placeholder="Question" id="question_input" class="input_text" value="<?php echo($question); ?>">
-            <textarea placeholder="Answer" id="answer_input" rows="5" cols="50" class="input_text" value="<?php echo($question); ?>"></textarea>
+            <textarea placeholder="Answer" id="answer_input" rows="5" cols="50" class="input_text"></textarea>
             <h2 id="optional_header" class="sub_head">Optional details</h2>
             <label for="client_input">Client: </label>
             <input type="text" placeholder="Client" id="client_input" class="input_text" value="<?php echo($client); ?>">
             <label for="year_input">Year: </label>
             <input type="text" placeholder="Year" id="year_input" class="input_text" value="<?php echo ($year); ?>">
-            <textarea placeholder="Additional Notes" id="additional_notes_input" rows="5" cols="50" class="input_text" value="<?php echo($notes); ?>"></textarea><br>
+            <textarea placeholder="Additional Notes" id="additional_notes_input" rows="5" cols="50" class="input_text"></textarea><br>
             <p>Rating: </p><br>
             <p id="1" class="star" value="1" onclick="updateStars(1)">★</p>
             <p id="2" class="star" value="2" onclick="updateStars(2)">☆</p>

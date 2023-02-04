@@ -186,6 +186,12 @@ var oldRating = document.getElementById("old_rating").value;
 var oldRatingInt = parseInt(oldRating);
 updateStars(oldRatingInt);
 
+var oldAnswer = document.getElementById("old_answer").value;
+document.getElementById("answer_input").value = oldAnswer;
+
+var oldNotes = document.getElementById("old_notes").value;
+document.getElementById("additional_notes_input").value = oldNotes;
+
 document.getElementById("question_input").disabled = false;
 document.getElementById("client_input").disabled = false;
 document.getElementById("year_input").disabled = false;

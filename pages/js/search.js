@@ -282,9 +282,9 @@ function loadMoreQuestion() {
                     document.getElementById("load_more_q_button").remove();
                     document.getElementById("question_ammount").value = questionAmmount + "";
                     if (addedQuestionAmmount > 9) {
-                        var rootElement = document.getElementById("client_results");
+                        var rootElement = document.getElementById("question_results");
                         rootElement.innerHTML += `
-                            <button type="button" id="load_more_c_button" onclick="loadMoreClient()">Load More</button>
+                            <button type="button" id="load_more_q_button" onclick="loadMoreQuestion()">Load More</button>
                         `;
                     }
                 }
@@ -309,6 +309,52 @@ function loadMoreClient() {
             data: {search_term:searchTerm,tags:tags,client_ammount:clientAmmount},
             success: function(data) {
                 console.log(data);
+                if (data == "0") {
+                    document.getElementById("load_more_c_button").remove();
+                }
+                else {
+                    var addedClientAmmount = 0;
+                    var returnArray = data.split("#-#");
+                    for (var i = 0; i < returnArray.length; i++) {
+                        if (returnArray[i] == "") {
+                            continue;
+                        }
+                        var resultArray = returnArray[i].split("-#-");
+                        var ratingText = "";
+                        var rating = parseInt(resultArray[4]);
+                        for (var j = 0; j < rating; j++) {
+                            ratingText += "★";
+                        }
+                        for (var j = 0; j < 5 - rating; j++) {
+                            ratingText += "☆";
+                        }
+                        if (searchTerm.length > 0) {
+                            var re = new RegExp(searchTerm, "gi");
+                            var innerText = resultArray[1].replace(re, "<mark>$&</mark");
+                        }
+                        else {
+                            innerText = resultArray[1];
+                        }
+                        var element = `
+                        <div id="`+resultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+resultArray[0]+`')">
+                            <p id="`+resultArray[0]+`_p" class="result_p">`+innerText+`</p>
+                            <p id="`+resultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
+                        </div>
+                        `;
+                        var rootElement = document.getElementById("client_results");
+                        rootElement.innerHTML += element;
+                        clientAmmount++;
+                        addedClientAmmount++;
+                    }
+                    document.getElementById("load_more_c_button").remove();
+                    document.getElementById("client_ammount").value = clientAmmount + "";
+                    if (addedQuestionAmmount > 9) {
+                        var rootElement = document.getElementById("client_results");
+                        rootElement.innerHTML += `
+                            <button type="button" id="load_more_c_button" onclick="loadMoreClient()">Load More</button>
+                        `;
+                    }
+                }
             }
         });
     }

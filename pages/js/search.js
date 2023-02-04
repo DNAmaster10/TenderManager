@@ -27,7 +27,7 @@ function submitSearch() {
     }
     document.cookie = "lastTagList=" + tagList;
     
-    if (!(searchTerm.length < 1 && tagList != "false")) {
+    if (!(searchTerm.length < 1 || tagList != "false")) {
         $.ajax({
             url: "/pages/handle/search_handle.php",
             type: "GET",

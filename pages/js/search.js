@@ -60,7 +60,7 @@ function submitSearch() {
                                 var element = `
                                 <div id="`+thirdResultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+thirdResultArray[0]+`')">
                                     <p id="`+thirdResultArray[0]+`_p" class="result_p">`+innerText+`</p>
-                                    <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
+                                    <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+` `+thirdResultArray[2]+`</p>
                                 </div>
                                 `;
                                 var rootElement = document.getElementById("question_results");
@@ -292,7 +292,27 @@ function loadMoreQuestion() {
         });
     }
 }
-console.log(document.cookie);
+function loadMoreClient() {
+    var searchTerm = document.getElementById("search_input");
+    if (searchTerm.length < 1) {
+        searchTerm = "none-null";
+    }
+    var tags = document.getElementById("tag_list").value;
+    if (tags.length < 1) {
+        tags = "none-null";
+    }
+    var clientAmmount = document.getElementById("client_ammount").value;
+    if (searchTerm != "none-null" || tags != "none-null") {
+        $.ajax({
+            url: "/pages/handle/get_clients_handle.php",
+            type: "GET",
+            data: {search_term:searchTerm,tags:tags,client_ammount,clientAmmount},
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    }
+}
 if (document.getElementById("last_page").value == "info") {
     console.log("3");
     var lastSearchTypes = getCookie("lastSearchTypes");
@@ -318,7 +338,9 @@ if (document.getElementById("last_page").value == "info") {
         var lastTagList = getCookie("lastTagList");
         var lastTagListArray = lastTagList.split("#-#");
         for (var i = 0; i < lastTagListArray.length; i++) {
-            addTag(lastTagListArray[i], false);
+            if (lastTagListArray[i] != "null") {
+                addTag(lastTagListArray[i], false);
+            }
         }
         submitSearch();
     }

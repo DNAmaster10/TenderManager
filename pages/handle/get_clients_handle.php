@@ -8,11 +8,11 @@
         die();
     }
 
-    if (!isset($_GET["question_ammount"]) || strlen($_GET["question_ammount"]) < 1 || !is_numeric($_GET["question_ammount"])) {
+    if (!isset($_GET["client_ammount"]) || strlen($_GET["client_ammount"]) < 1 || !is_numeric($_GET["client_ammount"])) {
         error();
     }
     else {
-        $question_ammount = intval($_GET["question_ammount"]);
+        $client_ammount = intval($_GET["client_ammount"]);
     }
     $contains_term = (!isset($_GET["search_term"]) || strlen($_GET["search_term"]) < 1 || $_GET["search_term"] == "none-null");
 
@@ -23,9 +23,9 @@
     }
 
     $return_string = "";
-    if ($contains_term && $contains_tags) {
+    if ($cotnains_term && $contains_tags) {
         $tag_array = explode("#-#", $_GET["tags"]);
-        $statement = "SELECT id,question,client,year,rating FROM tendors WHERE question LIKE ?";
+        $statement = "SELECT id,question,client,year,rating FROM tendors WHERE client LIKE ?";
         for ($i = 0; $i < count($tag_array); $i++) {
             $statement .= " AND tags LIKE ?";
             $types .= "s";
@@ -33,21 +33,9 @@
         $statement .= " LIMIT 10 OFFSET ?";
         $types .= "i";
         array_unshift($tag_array, "%".$_GET["search_term"]."%");
-        array_push($tag_array, $question_ammount);
+        array_push($tag_array, $client_ammount);
         $stmt = $conn->prepare($statement);
         $stmt->bind_param($types, ...$tag_array);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        while($row = $result->fetch_assoc()) {
-            $return_string .= "#-#".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
-        }
-        unset($result);
-        $stmt->close();
-    }
-    else if ($contains_term && !$contains_tags) {
-        $param = "%".$_GET["search_term"]."%";
-        $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE question LIKE ? LIMIT 10 OFFSET ?");
-        $stmt->bind_param("si", $param, $question_ammount);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
@@ -66,9 +54,21 @@
         }
         $statement .= " LIMIT 10 OFFSET ?";
         $types .= "i";
-        array_push($tag_array, $question_ammount);
+        array_push($tag_array, $client_ammount);
         $stmt = $conn->prepare($statement);
         $stmt->bind_param($types, ...$tag_array);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $return_string .= "#-#".$row["id"]."-#-".$row["question"]."-#-".$row["client"]."-#-".$row["year"]."-#-".$row["rating"];
+        }
+        unset($result);
+        $stmt->close();
+    }
+    else if ($contains_term && !$contains_tags) {
+        $param = "%".$_GET["search_term"]."%";
+        $stmt = $conn->prepare("SELECT id,question,client,year,rating FROM tendors WHERE client LIKE ? LIMIT 10 OFFSET ?");
+        $stmt->bind_param("si", $param, $client_ammount);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {

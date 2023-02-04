@@ -32,3 +32,9 @@ body {
     padding: 1px;
     display: inline;
 }
+#answer_container {
+    text-align: center;
+}
+#question {
+    margin-left: 1%;
+}

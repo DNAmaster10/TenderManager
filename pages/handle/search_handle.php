@@ -105,8 +105,8 @@
     }
     else if ($contains_tags && !$contains_term) {
         $statement = "SELECT id,question,client,year,rating FROM tendors WHERE tags LIKE ?";
-        $types = "";
-        for ($i = 0; $i < count($tag_array); $i++) {
+        $types = "s";
+        for ($i = 0; $i < count($tag_array) - 1; $i++) {
             $statement .= " AND tags LIKE ?";
             $types .= "s";
         }

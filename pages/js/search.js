@@ -302,14 +302,11 @@ function loadMoreClient() {
         tags = "none-null";
     }
     var clientAmmount = document.getElementById("client_ammount").value;
-    console.log(searchTerm);
-    console.log(clientAmmount);
-    console.log(tags);
     if (searchTerm != "none-null" || tags != "none-null") {
         $.ajax({
             url: "/pages/handle/get_clients_handle.php",
             type: "GET",
-            data: {search_term:searchTerm,tags:tags,client_ammount,clientAmmount},
+            data: {search_term:searchTerm,tags:tags,client_ammount:clientAmmount},
             success: function(data) {
                 console.log(data);
             }

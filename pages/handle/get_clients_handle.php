@@ -22,6 +22,13 @@
         error();
     }
 
+    $tag_array = explode("#-#", $_GET["tags"]);
+    if ($contains_tags) {
+        for ($i = 0; $i < count($tag_array); $i++) {
+            $tag_array[$i] = "%".$tag_array[$i]."%";
+        }
+    }
+
     $return_string = "";
     if ($cotnains_term && $contains_tags) {
         $tag_array = explode("#-#", $_GET["tags"]);

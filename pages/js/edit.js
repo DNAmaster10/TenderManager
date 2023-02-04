@@ -13,6 +13,7 @@ function uploadInfo() {
     var tags = document.getElementById("tag_list").value;
     var notes = document.getElementById("additional_notes_input").value;
     var rating = document.getElementById("rating").value;
+    var id = document.getElementById("id").value;
     if (question.length < 1) {
         document.getElementById("error").value = "Enter a question";
     }
@@ -32,9 +33,9 @@ function uploadInfo() {
         notes = "none";
     }
     $.ajax({
-        url: "/pages/handle/handle_add.php",
+        url: "/pages/handle/handle_edit.php",
         type: "POST",
-        data: {question:question,client:client,year:year,answer:answer,tags:tags,notes:notes,rating:rating},
+        data: {question:question,client:client,year:year,answer:answer,tags:tags,notes:notes,rating:rating,id:id},
         success: function(data) {
             data_array = data.split(":");
             if (data_array[0] == "error") {
@@ -48,21 +49,7 @@ function uploadInfo() {
                 document.getElementById("error").innerHTML = data_array[1];
             }
             else {
-                document.getElementById("question_input").value = "";
-                document.getElementById("client_input").value = "";
-                document.getElementById("year_input").value = "";
-                document.getElementById("answer_input").value = "";
-                document.getElementById("tag_list").value = "";
-                document.getElementById("additional_notes_input").value = "";
-                document.getElementById("question_input").disabled = false;
-                document.getElementById("client_input").disabled = false;
-                document.getElementById("year_input").disabled = false;
-                document.getElementById("answer_input").disabled = false;
-                document.getElementById("tag_input").disabled = false;
-                document.getElementById("additional_notes_input").disabled = false;
-                document.getElementById("tag_list").value = "#-#";
-                document.getElementById("added_tag_button_container").innerHTML = "";
-                updateStars("1");
+                window.location.replace("/pages/info.php?id=" + id);
             }
         }
     });

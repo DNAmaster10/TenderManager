@@ -38,6 +38,7 @@
         <link rel="stylesheet" href="/css/add.css">
     </head>
     <body>
+        <input type="hidden" id="id" value="<?php echo($_GET["id"]); ?>">
         <input type="hidden" id="old_rating" value="<?php echo(strval($rating)); ?>">
         <input type="hidden" id="old_tags" value="<?php echo($tags); ?>">
         <input type="hidden" id="old_answer" value="<?php echo($answer); ?>">

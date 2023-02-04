@@ -8,12 +8,28 @@
         die();
     }
 
+    if (!isset($_POST["id"]) || !is_numeric($_POST["id"])) {
+        error("Invalid ID");
+    }
+    
+    //Check ID in database
+    $id = intval($_GET["id"]);
+    $stmt = $conn->prepare("SELECT * FROM tendors WHERE id=?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    if ($stmt->num_rows() < 1) {
+        error("Invalid ID");
+    }
+    $stmt->close();
+
     if (!isset($_POST["question"]) || strlen($_POST["question"]) < 1) {
         error("Please enter a question");
     }
+
     if (!isset($_POST["answer"]) || strlen($_POST["answer"]) < 1) {
         error("Please enter an answer");
     }
+
     if (!isset($_POST["tags"]) || strlen($_POST["tags"]) < 1) {
         error("Please attach at least one tag");
     }
@@ -24,19 +40,16 @@
         $stmt = $conn->prepare("SELECT tag FROM tags WHERE tag=?");
         $stmt->bind_param("s", $tag_array[$i]);
         $stmt->execute();
-        $stmt->bind_result($result);
-        $stmt->fetch();
-        $stmt->close();
-        if (!$result) {
-            error("Tag ".$tag_array[$i]." invalid.");
+        if ($stmt->num_rows() < 1) {
+            error("Invalid tag: ".$tag_array[$i]);
         }
+        $stmt->close();
     }
 
     //Add basics
-    $stmt = $conn->prepare("INSERT INTO tendors(uploader, question, answer, tags) VALUES (?,?,?,?)");
-    $stmt->bind_param("ssss", $_SESSION["username"], $_POST["question"], $_POST["answer"], $_POST["tags"]);
+    $stmt = $conn->prepare("UPDATE tendors SET uploader=?, question=?, answer=?, tags=? WHERE id=?");
+    $stmt->bind_param("ssssi", $_SESSION["username"], $_POST["question"], $_POST["answer"], $_POST["tags"], $id);
     $stmt->execute();
-    $id = mysqli_insert_id($conn);
     $stmt->close();
 
     //Add additional
@@ -76,3 +89,4 @@
         $stmt->close();
     }
     echo ("success:Successfully submitted to database");
+?>

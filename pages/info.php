@@ -55,7 +55,7 @@
         <div id="main_container">
             <div id="action_button_container">
                 <?php
-                    if (isset($last_page)) {
+                    if (isset($last_page) && $last_page == "/pages/search.php") {
                         echo (`
                         <form id="back_form" class="action_button_form" action="`.$last_page.`">
                             <input type="submit" id="back_button" value="Back" class="action_button">

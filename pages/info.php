@@ -9,7 +9,7 @@
         die();
     }
 
-    if (!isset($_GET["id"])) {
+    if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {
         error("No ID was set");
     }
 
@@ -29,6 +29,15 @@
     }
     unset($result);
     $stmt->close();
+
+    $rating = intval($rating);
+    $rating_text = "";
+    for ($i = 0; $i < $rating; $i++) {
+        $rating_text .= "★";
+    }
+    for ($i = 0; $i < 5 - $rating; $i++) {
+        $rating_text .= "☆";
+    }
 
     $_SESSION["last_page"] = "info";
 ?>
@@ -50,7 +59,25 @@
                 </form>
             </div>
             <div id="info_container">
-
+                <h2 id="question"><?php echo ($question); ?></h2>
+                <div id="info_box">
+                    <p id="rating_lavel" class="info_text">Rating: </p><p id="rating_text" class="info_text"><?php echo($rating_text); ?></p>
+                    <p id="client_label" class="info_text">Client: </p><p id="client_text" class="info_text"><?php echo ($client); ?></p>
+                    <p id="last_edited_label" class="info_text">Last Edited By: </p><p id="last_edited_text" class="info_text"><?php echo($uploader); ?></p>
+                    <p id="tags_label" class="info_text">Tags: </p>
+                    <div id="tag_container">
+                        <?php
+                            $tag_array = explode("#-#", $tags);
+                            for ($i = 0; $i < count($tag_array); $i++) {
+                                echo ("<p id='".$tag_array[$i]."_tag' class='tag'>".$tag_array[$i]."</p>");
+                            }
+                        ?>
+                    </div>
+                    <p id="notes_label" class="info_text">Additional Notes: </p>
+                    <p id="notes_text"><?php echo($notes); ?></p>
+                </div>
+                <h3 id="answer_label">Answer: </h3>
+                <p id="answer_text"><?php echo($answer); ?></p>
             </div>
         </div>
     </body>

@@ -28,13 +28,11 @@ function submitSearch() {
     document.cookie = "lastTagList=" + tagList;
     
     if (searchTerm.length > 0 || tagList.length > 0) {
-        console.log("searching");
         $.ajax({
             url: "/pages/handle/search_handle.php",
             type: "GET",
             data: {search_term:searchTerm,search_types:searchTypes,tag_list:tagList},
             success: function(data) {
-                console.log(data);
                 document.getElementById("question_results").innerHTML = "";
                 document.getElementById("client_results").innerHTML = "";
                 if (data != "error") {
@@ -243,7 +241,6 @@ function loadMoreQuestion() {
             type: "GET",
             data: {search_term:searchTerm,tags:tags,question_ammount:questionAmmount},
             success: function(data) {
-                console.log(data);
                 if (data == "0") {
                     document.getElementById("load_more_q_button").remove();
                 }
@@ -310,7 +307,6 @@ function loadMoreClient() {
             type: "GET",
             data: {search_term:searchTerm,tags:tags,client_ammount:clientAmmount},
             success: function(data) {
-                console.log(data);
                 if (data == "0") {
                     document.getElementById("load_more_c_button").remove();
                 }
@@ -362,26 +358,21 @@ function loadMoreClient() {
     }
 }
 if (document.getElementById("last_page").value == "info") {
-    console.log("3");
     var lastSearchTypes = getCookie("lastSearchTypes");
     if (lastSearchTypes.length > 0) {
-        console.log("4");
         if (lastSearchTypes.includes("questions")) {
             document.getElementById("search_questions").checked = true;
-            console.log("5");
         }
         else {
             document.getElementById("search_questions").checked = false;
         }
         if (lastSearchTypes.includes("clients")) {
             document.getElementById("search_clients").checked = true;
-            console.log("6");
         }
         else {
             document.getElementById("search_clients").checked = false;
         }
         var lastSearchTerm = getCookie("lastSearchTerm");
-        console.log("Last search: " + lastSearchTerm);
         document.getElementById("search_input").value = lastSearchTerm;
         var lastTagList = getCookie("lastTagList");
         var lastTagListArray = lastTagList.split("#-#");

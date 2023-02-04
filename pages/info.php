@@ -72,9 +72,9 @@
             <div id="info_container">
                 <h2 id="question"><?php echo ($question); ?></h2>
                 <div id="info_box">
-                    <p id="rating_label" class="info_text">Rating: </p><p id="rating_text" class="info_text"><?php echo($rating_text); ?></p>
-                    <p id="client_label" class="info_text">Client: </p><p id="client_text" class="info_text"><?php echo ($client); ?></p>
-                    <p id="last_edited_label" class="info_text">Last Edited By: </p><p id="last_edited_text" class="info_text"><?php echo($uploader); ?></p>
+                    <p id="rating_label" class="info_text">Rating:   <?php echo($rating_text); ?></p>
+                    <p id="client_label" class="info_text">Client:   <?php echo($client); ?></p>
+                    <p id="last_edited_label" class="info_text">Last Edited By:   <?php echo($uploader); ?></p>
                     <p id="tags_label" class="info_text">Tags: </p>
                     <div id="tag_container">
                         <?php

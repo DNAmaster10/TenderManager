@@ -18,9 +18,13 @@
     $stmt = $conn->prepare("SELECT * FROM tendors WHERE id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
-    if ($stmt->num_rows < 1) {
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    if (!$result) {
         error("Invalid ID");
     }
+    $stmt->close();
+    unset($result);
 
     $stmt = $conn->prepare("DELETE FROM tendors WHERE id=?");
     $stmt->bind_param("i", $id);

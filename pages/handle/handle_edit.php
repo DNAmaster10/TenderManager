@@ -17,10 +17,13 @@
     $stmt = $conn->prepare("SELECT * FROM tendors WHERE id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
-    if ($stmt->num_rows < 1) {
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    if (!$result) {
         error("Invalid ID");
     }
-    $stmt->close();
+    unset ($result);
 
     if (!isset($_POST["question"]) || strlen($_POST["question"]) < 1) {
         error("Please enter a question");

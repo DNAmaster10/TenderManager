@@ -373,12 +373,16 @@ if (document.getElementById("last_page").value == "info") {
             document.getElementById("search_clients").checked = false;
         }
         var lastSearchTerm = getCookie("lastSearchTerm");
-        document.getElementById("search_input").value = lastSearchTerm;
+        if (lastSearchTerm != "none") {
+            document.getElementById("search_input").value = lastSearchTerm;
+        }
         var lastTagList = getCookie("lastTagList");
+        if (!lastTagList == "false") {
         var lastTagListArray = lastTagList.split("#-#");
-        for (var i = 0; i < lastTagListArray.length; i++) {
-            if (lastTagListArray[i] != "null") {
-                addTag(lastTagListArray[i], false);
+            for (var i = 0; i < lastTagListArray.length; i++) {
+                if (lastTagListArray[i] != "null") {
+                    addTag(lastTagListArray[i], false);
+                }
             }
         }
         submitSearch();

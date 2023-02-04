@@ -293,7 +293,7 @@ function loadMoreQuestion() {
     }
 }
 function loadMoreClient() {
-    var searchTerm = document.getElementById("search_input");
+    var searchTerm = document.getElementById("search_input").value;
     if (searchTerm.length < 1) {
         searchTerm = "none-null";
     }

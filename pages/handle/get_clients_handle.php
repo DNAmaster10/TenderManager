@@ -31,7 +31,7 @@
 
     $return_string = "";
     if ($cotnains_term && $contains_tags) {
-        $tag_array = explode("#-#", $_GET["tags"]);
+        $types = "s";
         $statement = "SELECT id,question,client,year,rating FROM tendors WHERE client LIKE ?";
         for ($i = 0; $i < count($tag_array); $i++) {
             $statement .= " AND tags LIKE ?";
@@ -52,10 +52,9 @@
         $stmt->close();
     }
     else if (!$contains_term && $contains_tags) {
-        $types = "";
-        $tag_array = explode("#-#", $_GET["tags"]);
+        $types = "s";
         $statement = "SELECT id,question,client,year,rating FROM tendors WHERE tags LIKE ?";
-        for ($i = 0; $i < count($tag_array); $i++) {
+        for ($i = 0; $i < count($tag_array) - 1; $i++) {
             $statement .= " AND tags LIKE ?";
             $types .= "s";
         }

@@ -13,7 +13,7 @@
     }
     
     //Check ID in database
-    $id = intval($_GET["id"]);
+    $id = intval($_POST["id"]);
     $stmt = $conn->prepare("SELECT * FROM tendors WHERE id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();

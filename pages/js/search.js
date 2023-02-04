@@ -348,7 +348,7 @@ function loadMoreClient() {
                     }
                     document.getElementById("load_more_c_button").remove();
                     document.getElementById("client_ammount").value = clientAmmount + "";
-                    if (addedQuestionAmmount > 9) {
+                    if (addedClientAmmount > 9) {
                         var rootElement = document.getElementById("client_results");
                         rootElement.innerHTML += `
                             <button type="button" id="load_more_c_button" onclick="loadMoreClient()">Load More</button>

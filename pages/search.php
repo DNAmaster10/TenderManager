@@ -3,7 +3,7 @@
     include $_SERVER["DOCUMENT_ROOT"]."/includes/dbh.php";
     include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
     if (isset($_SESSION["last_page"])) {
-        if (strlen($_SESSION["last_page"]) < 1) {
+        if (!strlen($_SESSION["last_page"]) < 0) {
             $last_page = "null";
             unset($_SESSION["last_page"]);
         }
@@ -25,7 +25,7 @@
     </head>
     <body>
         <input type="hidden" id="last_page" value="<?php echo ($last_page); ?>"> 
-        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php";         ?>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php"; ?>
         <div id="main_container">
             <div id="search_box">
                 <label for="search_input">Search Term: </label>

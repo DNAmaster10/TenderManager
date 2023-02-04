@@ -72,10 +72,10 @@
             <div id="info_container">
                 <h2 id="question"><?php echo ($question); ?></h2>
                 <div id="info_box">
-                    <p id="rating_label" class="info_text">Rating:   <?php echo($rating_text); ?></p>
-                    <p id="client_label" class="info_text">Client:   <?php echo($client); ?></p>
-                    <p id="last_edited_label" class="info_text">Last Edited By:   <?php echo($uploader); ?></p>
-                    <p id="tags_label" class="info_text">Tags: </p>
+                    <p id="rating_label" class="info_text"><b>Rating:</b>   <?php echo($rating_text); ?></p>
+                    <p id="client_label" class="info_text"><b>Client:</b>   <?php echo($client); ?></p>
+                    <p id="last_edited_label" class="info_text"><b>Last Edited By:</b>   <?php echo($uploader); ?></p>
+                    <p id="tags_label" class="info_text"><b>Tags:</b> </p>
                     <div id="tag_container">
                         <?php
                             $tag_array = explode("#-#", $tags);
@@ -84,7 +84,7 @@
                             }
                         ?>
                     </div>
-                    <p id="notes_label" class="info_text">Additional Notes: </p>
+                    <p id="notes_label" class="info_text"><b>Additional Notes:</b> </p>
                     <p id="notes_text"><?php echo($notes); ?></p>
                 </div>
                 <h3 id="answer_label">Answer: </h3>

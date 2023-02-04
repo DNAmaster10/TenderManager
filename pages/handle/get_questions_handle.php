@@ -14,9 +14,9 @@
     else {
         $question_ammount = intval($_GET["question_ammount"]);
     }
-    $contains_term = (!isset($_GET["search_term"]) || strlen($_GET["search_term"]) < 1 || $_GET["search_term"] == "none-null");
+    $contains_term = (isset($_GET["search_term"]) && strlen($_GET["search_term"]) > 0 && $_GET["search_term"] != "none-null");
 
-    $contains_tags = (!isset($_GET["tags"]) || strlen($_GET["tags"]) < 1 || $_GET["tags"] == "none-null");
+    $contains_tags = (isset($_GET["tags"]) && strlen($_GET["tags"]) > 0 && $_GET["tags"] != "none-null");
 
     if (!$contains_term && !$contains_tags) {
         error();

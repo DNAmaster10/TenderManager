@@ -5,16 +5,15 @@
     if (isset($_SESSION["last_page"])) {
         if (!strlen($_SESSION["last_page"]) < 0) {
             $last_page = "null";
-            unset($_SESSION["last_page"]);
         }
         else {
             $last_page = $_SESSION["last_page"];
-            unset($_SESSION["last_page"]);
         }
     }
     else {
         $last_page = "null";
     }
+    $_SESSION["last_page"] == "/pages/search.php";
 ?>
 <!DOCTYPE html>
 <html>

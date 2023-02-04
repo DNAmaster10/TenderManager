@@ -87,8 +87,10 @@
                     <p id="notes_label" class="info_text"><b>Additional Notes:</b> </p>
                     <p id="notes_text"><?php echo($notes); ?></p>
                 </div>
-                <h3 id="answer_label">Answer: </h3>
-                <p id="answer_text"><?php echo($answer); ?></p>
+                <div id="answer_container">
+                    <h3 id="answer_label">Answer: </h3>
+                    <p id="answer_text"><?php echo($answer); ?></p>
+                </div>
             </div>
         </div>
     </body>

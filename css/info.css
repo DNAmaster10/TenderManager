@@ -16,18 +16,19 @@ body {
     font-size: 20px;
 }
 #info_box {
+    float: left;
     border: 2px solid #ccc;
     width: 30%;
     border-radius: 10px;
     padding: 10px;
     text-align: left;
 }
-#rating_label {
-    display: inline-block;
-}
-#rating_text {
-    float: right;
-}
-#client_text {
-    display: inline-block;
+.tag {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    font-size: 14px;
+    width: min-content;
+    padding: 1px;
+    display: inline;
 }

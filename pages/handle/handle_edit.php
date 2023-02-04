@@ -17,7 +17,7 @@
     $stmt = $conn->prepare("SELECT * FROM tendors WHERE id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
-    if ($stmt->num_rows() < 1) {
+    if ($stmt->num_rows < 1) {
         error("Invalid ID");
     }
     $stmt->close();

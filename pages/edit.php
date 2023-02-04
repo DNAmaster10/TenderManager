@@ -69,6 +69,10 @@
             <input type="hidden" id="tag_list" value="#-#">
             <button type="button" onclick="uploadInfo()">Submit</button>
             <p id="error"></p>
+            <form action="/pages/remove.php" method="POST" id="delete_form">
+                <input type="hidden" name="id" value="<?php echo($_GET["id"]); ?>">
+                <input type="submit" value="Delete">
+            </form>
         </div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

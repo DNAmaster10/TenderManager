@@ -266,7 +266,7 @@ function loadMoreQuestion() {
                             var innerText = resultArray[1].replace(re, "<mark>$&</mark>");
                         }
                         else {
-                            innerText = resultArray[1];
+                            var innerText = resultArray[1];
                         }
                         var element = `
                         <div id="`+resultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+resultArray[0]+`')">
@@ -330,10 +330,10 @@ function loadMoreClient() {
                         }
                         if (searchTerm.length > 0) {
                             var re = new RegExp(searchTerm, "gi");
-                            var innerText = resultArray[1].replace(re, "<mark>$&</mark");
+                            var innerText = resultArray[1].replace(re, "<mark>$&</mark>");
                         }
                         else {
-                            innerText = resultArray[1];
+                            var innerText = resultArray[1];
                         }
                         var element = `
                         <div id="`+resultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+resultArray[0]+`')">

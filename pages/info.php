@@ -51,7 +51,7 @@
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php"; ?>
         <div id="main_container">
             <div id="action_button_container">
-                <form id="back_form" class="action_button_form">
+                <form id="back_form" class="action_button_form" action="/pages/search.php">
                     <input type="submit" id="back_button" value="Back" class="action_button">
                 </form>
                 <form id="edit_form" class="action_button_form">

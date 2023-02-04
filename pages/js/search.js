@@ -88,7 +88,7 @@ function submitSearch() {
                                 var element = `
                                 <div id="`+thirdResultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+thirdResultArray[0]+`')">
                                     <p id="`+thirdResultArray[0]+`_p" class="result_p">`+innerText+`</p>
-                                    <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
+                                    <p id="`+thirdResultArray[0]+`_rating" class="rating_p">`+ratingText+` ` +thirdResultArray[2]+`</p>
                                 </div>
                                 `;
                                 var rootElement = document.getElementById("client_results");
@@ -271,7 +271,7 @@ function loadMoreQuestion() {
                         var element = `
                         <div id="`+resultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+resultArray[0]+`')">
                             <p id="`+resultArray[0]+`_p" class="result_p">`+innerText+`</p>
-                            <p id="`+resultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
+                            <p id="`+resultArray[0]+`_rating" class="rating_p">`+ratingText+` `+resultArray[2]+`</p>
                         </div>
                         `;
                         var rootElement = document.getElementById("question_results");
@@ -338,7 +338,7 @@ function loadMoreClient() {
                         var element = `
                         <div id="`+resultArray[0]+`_result_container" class="result_container" onclick="redirectInfo('`+resultArray[0]+`')">
                             <p id="`+resultArray[0]+`_p" class="result_p">`+innerText+`</p>
-                            <p id="`+resultArray[0]+`_rating" class="rating_p">`+ratingText+`</p>
+                            <p id="`+resultArray[0]+`_rating" class="rating_p">`+ratingText+` `+resultArray[2]+`</p>
                         </div>
                         `;
                         var rootElement = document.getElementById("client_results");

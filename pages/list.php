@@ -19,6 +19,9 @@
     <body>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php"; ?>
         <div id="main_container">
+        <div class="link_container" onclick="window.location.href = '/pages/info.php?id=`.$id.`'">
+                            <p class="link_text">`.$question.`</p><p class="rating_text">`.$rating_text.`</p>
+                        </div>
             <?php
                 while ($row = $result->fetch_assoc()) {
                     $id = strval($row["id"]);
@@ -31,12 +34,9 @@
                     for ($i = 0; $i < 5 - $rating; $i++) {
                         $rating_text .= "☆";
                     }
-                    echo ('<p>test</p>');
-                    echo (`
-                        <div class="link_container" onclick="window.location.href = '/pages/info.php?id=`.$id.`'">
-                            <p class="link_text">`.$question.`</p><p class="rating_text">`.$rating_text.`</p>
-                        </div>
-                    `);
+                    echo ("<div class='link_container' onclick='window.location.href = `/pages/info.php?id=`$id`'>");
+                    echo ("<p class='link_text'>$question</p><p class='rating_text'>$rating_text</p>");
+                    echo ("</div>");
                 }
             ?>
         </div>

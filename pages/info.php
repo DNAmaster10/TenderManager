@@ -57,11 +57,11 @@
             <div id="action_button_container">
                 <?php
                     if (isset($last_page) && $last_page == "/pages/search.php" || $last_page == "/pages/list.php") {
-                        echo (`
-                        <form id="back_form" class="action_button_form" action="`.$last_page.`">
-                            <input type="submit" id="back_button" value="Back" class="action_button">
+                        echo ("
+                        <form id=\"back_form\" class=\"action_button_form\" action="$last_page">
+                            <input type=\"submit\" id=\"back_button\" value=\"Back\" class=\"action_button\">
                         </form>
-                        `);
+                        ");
                     }
                 ?>
                 <form id="edit_form" class="action_button_form" method="GET" action="/pages/edit.php">

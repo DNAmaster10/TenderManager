@@ -15,11 +15,14 @@
     //Check ID in database
     error_log("Id: ".$_POST["id"]);
     $id = intval($_POST["id"]);
-    $stmt = $conn->prepare("SELECT id FROM tendors WHERE id=?");
-    $stmt->bind_param("i", $_POST["id"]);
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM tendors WHERE id=?");
+    $stmt->bind_param("i", $id);
     $stmt->execute();
-    error_log(strval($stmt->num_rows));
-    if (($stmt->num_rows) < 1) {
+    $stmt->bind_result($num_rows);
+    $stmt->fetch();
+    error_log(strval($num_rows));
+
+    if ($num_rows < 1) {
         error("Invalid ID");
     }
     $stmt->close();

@@ -31,11 +31,12 @@
                     for ($i = 0; $i < 5 - $rating; $i++) {
                         $rating_text .= "☆";
                     }
-                    echo ("<div class='link_container' onclick='window.location.href = `/pages/info.php?id=`$id`'>");
+                    echo ("<div class='link_container' onclick='redirect(this.id)' id='$id'>");
                     echo ("<p class='link_text'>$question</p><p class='rating_text'>$rating_text</p>");
                     echo ("</div>");
                 }
             ?>
         </div>
     </body>
+    <script src="/pages/js/list.js"></script>
 </html>

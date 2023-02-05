@@ -20,7 +20,10 @@
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php";?>
         <div id="main_container">
             <h1>Are you sure you want to remove this entry?</h1>
-            <form action="/pages/remove_confirm.php" method="POST">
+            <form action="/pages/edit.php?id=<?php echo($_POST["id"]); ?>" id="back_button_form" method="GET">
+                <input type="submit" value="Back">
+            </form>
+            <form action="/pages/remove_confirm.php" method="POST" id="confirm_button_form">
                 <input type="hidden" name="id" value="<?php echo($_POST["id"]); ?>">
                 <input type="submit" value="Delete Entry">
             </form>

@@ -16,7 +16,7 @@
     //Check ID exists
     $id = intval($_GET["id"]);
     $stmt = $conn->prepare("SELECT COUNT(*) FROM tendors WHERE id=?");
-    $stmt->bind_param("i". $id);
+    $stmt->bind_param("i", $id);
     $stmt->execute();
     $stmt->bind_result($num_rows);
     $stmt->fetch();

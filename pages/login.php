@@ -18,7 +18,7 @@
             <br>
             <input type="text" name="password" placeholder="Password" id="password_input">
             <br>
-            <input type="checkbox" id="remember_checkbox" name="remember" value="true">
+
             <input type="submit" value="Login">
         </form>
         <p id="error_p"><?php if (isset($error)) { echo $error; } ?></p>

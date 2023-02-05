@@ -13,7 +13,7 @@
     <body>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php"; ?>
         <div id="home_bg_img_container">
-            <img id="home_bg_img" src="media/images/home/home_image_1.jpg" stype="width: 100%">
+            <img id="home_bg_img" src="/media/images/home/home_image_1.jpg" stype="width: 100%">
         </div>
         <h1>Welcome back, <?php echo $_SESSION["username"]; ?>.</h1>
         <form id="search_button" action="/pages/search.php">

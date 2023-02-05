@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="/css/remove.css">
     </head>
     <body>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php";?>
         <div id="main_container">
             <h1>Are you sure you want to remove this entry?</h1>
             <form action="/pages/remove_confirm.php" method="POST">

@@ -15,7 +15,9 @@
     <body>
         <form action="/pages/login_submit.php" method="POST">
             <input type="text" name="username" placeholder="Username" id="username_input">
+            <br>
             <input type="text" name="password" placeholder="Password" id="password_input">
+            <br>
             <input type="checkbox" id="remember_checkbox" name="remember" value="true">
             <input type="submit" value="Login">
         </form>

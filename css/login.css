@@ -1,1 +1,13 @@
-placeholder
+body {
+    margin: 0px;
+  }
+  form {
+    text-align: center;
+    margin: 10px;
+  }
+  input[type=text] {
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 3px;
+    font-size: 20px;
+  }

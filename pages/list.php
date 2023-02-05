@@ -19,9 +19,6 @@
     <body>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/header.php"; ?>
         <div id="main_container">
-        <div class="link_container" onclick="window.location.href = '/pages/info.php?id=`.$id.`'">
-                            <p class="link_text">`.$question.`</p><p class="rating_text">`.$rating_text.`</p>
-                        </div>
             <?php
                 while ($row = $result->fetch_assoc()) {
                     $id = strval($row["id"]);

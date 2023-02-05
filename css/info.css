@@ -14,6 +14,7 @@ body {
     border-radius: 10px;
     background-color: #f8f8f8;
     font-size: 20px;
+    display: inline;
 }
 #info_box {
     float: left;
@@ -37,4 +38,13 @@ body {
 }
 #question {
     margin-left: 1%;
+}
+#back_button {
+    float: left;
+}
+#edit_button {
+    float: right;
+}
+#action_button_container {
+    margin-bottom: 50px;
 }

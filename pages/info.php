@@ -58,7 +58,7 @@
                 <?php
                     if (isset($last_page) && $last_page == "/pages/search.php" || $last_page == "/pages/list.php") {
                         echo ("
-                        <form id=\"back_form\" class=\"action_button_form\" action='\"$last_page\"'>
+                        <form id=\"back_form\" class=\"action_button_form\" action=\"$last_page\">
                             <input type=\"submit\" id=\"back_button\" value=\"Back\" class=\"action_button\">
                         </form>
                         ");

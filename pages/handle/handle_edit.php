@@ -16,7 +16,7 @@
     error_log("Id: ".$_POST["id"]);
     $id = intval($_POST["id"]);
     $stmt = $conn->prepare("SELECT id FROM tendors WHERE id=?");
-    $stmt->bind_param("i", $id);
+    $stmt->bind_param("i", $_POST["id"]);
     $stmt->execute();
     error_log(strval($stmt->num_rows));
     if (($stmt->num_rows) < 1) {

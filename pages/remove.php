@@ -18,7 +18,7 @@
     </head>
     <body>
         <div id="main_container">
-            <h1>Are you sure you wish to remove this entry?</h1>
+            <h1>Are you sure you want to remove this entry?</h1>
             <form action="/pages/remove_confirm.php" method="POST">
                 <input type="hidden" name="id" value="<?php echo($_POST["id"]); ?>">
                 <input type="submit" value="Delete Entry">

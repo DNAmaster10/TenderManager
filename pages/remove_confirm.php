@@ -15,16 +15,16 @@
     $id = intval($_POST["id"]);
 
     //Check ID is valid
-    $stmt = $conn->prepare("SELECT * FROM tendors WHERE id=?");
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM tendors WHERE id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
-    $stmt->bind_result($result);
+    $stmt->bind_result($num_rows);
     $stmt->fetch();
-    if (!$result) {
+    if ($num_rows < 1) {
         error("Invalid ID");
     }
     $stmt->close();
-    unset($result);
+    unset($num_rows);
 
     $stmt = $conn->prepare("DELETE FROM tendors WHERE id=?");
     $stmt->bind_param("i", $id);

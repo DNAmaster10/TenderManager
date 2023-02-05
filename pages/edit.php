@@ -13,6 +13,19 @@
         error("Invalid ID");
     }
 
+    //Check ID exists
+    $id = intval($_GET["id"]);
+    $stmt = $conm->prepapre("SELECT COUNT(*) FROM tendors WHERE id=?");
+    $stmt->bind_param("i". $id);
+    $stmt->execute();
+    $stmt->bind_result($num_rows);
+    $stmt->fetch();
+    if ($num_rows < 1) {
+        error("Invalid ID");
+    }
+    $stmt->close();
+    unset($num_rows);
+
     $stmt = $conn->prepare("SELECT uploader,client,year,answer,tags,notes,rating,question FROM tendors WHERE id=?");
     $stmt->bind_param("i", $_GET["id"]);
     $stmt->execute();

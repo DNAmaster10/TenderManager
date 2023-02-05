@@ -13,19 +13,17 @@
     }
     
     //Check ID in database
-    error_log("Id: ".$_POST["id"]);
     $id = intval($_POST["id"]);
     $stmt = $conn->prepare("SELECT COUNT(*) FROM tendors WHERE id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $stmt->bind_result($num_rows);
     $stmt->fetch();
-    error_log(strval($num_rows));
-
     if ($num_rows < 1) {
         error("Invalid ID");
     }
     $stmt->close();
+    unset($num_rows);
 
     if (!isset($_POST["question"]) || strlen($_POST["question"]) < 1) {
         error("Please enter a question");
@@ -42,13 +40,16 @@
     //Add tag check later
     $tag_array = explode("#-#", $_POST["tags"]);
     for ($i = 0; $i < count($tag_array); $i++) {
-        $stmt = $conn->prepare("SELECT tag FROM tags WHERE tag=?");
+        $stmt = $conn->prepare("SELECT COUNT(*) FROM tags WHERE tag=?");
         $stmt->bind_param("s", $tag_array[$i]);
         $stmt->execute();
-        if ($stmt->num_rows() < 1) {
+        $stmt->bind_result($num_rows);
+        $stmt->fetch(); 
+        if ($num_rows < 1) {
             error("Invalid tag: ".$tag_array[$i]);
         }
         $stmt->close();
+        unset($num_rows);
     }
 
     //Add basics

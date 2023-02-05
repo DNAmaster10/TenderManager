@@ -31,6 +31,7 @@
                     for ($i = 0; $i < 5 - $rating; $i++) {
                         $rating_text .= "☆";
                     }
+                    echo (`<p>test</p>`);
                     echo (`
                         <div class="link_container" onclick="window.location.href = '/pages/info.php?id=`.$id.`'">
                             <p class="link_text">`.$question.`</p><p class="rating_text">`.$rating_text.`</p>

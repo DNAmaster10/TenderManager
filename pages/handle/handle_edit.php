@@ -14,7 +14,7 @@
     
     //Check ID in database
     $id = intval($_POST["id"]);
-    $stmt = $conn->prepare("SELECT * FROM tendors WHERE id=?");
+    $stmt = $conn->prepare("SELECT id FROM tendors WHERE id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     error_log(strval($stmt->num_rows));

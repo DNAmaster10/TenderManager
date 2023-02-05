@@ -17,7 +17,8 @@
     $stmt = $conn->prepare("SELECT * FROM tendors WHERE id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
-    if (mysqli_num_rows($stmt) < 1) {
+    error_log(strval($stmt->num_rows));
+    if ($stmt->num_rows < 1) {
         error("Invalid ID");
     }
     $stmt->close();

@@ -10,6 +10,7 @@
     <head>
         <title>Login</title>
         <link rel="stylesheet" href="/css/login.css">
+        <link rel="stylesheet" hreg="/css/main.css">
     </head>
     <body>
         <form action="/pages/login_submit.php" method="POST">

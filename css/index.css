@@ -1,4 +1,18 @@
 body {
     padding: 0px;
     margin: 0px;
+    text-align: center;
+    background-color: lightblue;
+}
+input {
+    border: 1px solid #ccc;
+    margin-top: 20%;
+    border-radius: 10px;
+    font-size: 50px;
+    min-width: 20%;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+input:hover {
+    background-color: grey;
 }

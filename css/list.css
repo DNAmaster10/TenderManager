@@ -7,12 +7,18 @@ body {
     margin: 10px;
   }
 .link_container {
-  border: 1px solid black;
+  border: 2px solid #ccc;
   padding-left: 10px;
   padding-right: 10px;
   margin-top: 1px;
+  border-radius: 10px;
+}
+.link_container:hover {
+  background-color: #ccc;
 }
 .link_text {
+  color: blue;
+  text-decoration: underline;
   padding: 0px;
   white-space: nowrap;
   overflow: hidden;
@@ -20,6 +26,9 @@ body {
   text-align: left;
   max-width: 90%;
   float: left;
+}
+.link_text:hover{
+  color: purple;
 }
 .rating_text {
   padding: 0px;

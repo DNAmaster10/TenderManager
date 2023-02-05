@@ -20,12 +20,6 @@
             <p id="error"></p>
             <div id="tag_list_container"></div>
         </div>
-        <div id="tag_modal" class="modal">
-            <div class="modal_content">
-                <span class="close">&times;</span>
-                <p>Modal test</p>
-            </div>
-        </div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/pages/js/tags.js"></script>

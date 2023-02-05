@@ -18,7 +18,7 @@
     $stmt->bind_param("i", $id);
     $stmt->execute();
     error_log(strval($stmt->num_rows));
-    if ($stmt->num_rows < 1) {
+    if (($stmt->num_rows) < 1) {
         error("Invalid ID");
     }
     $stmt->close();

@@ -15,18 +15,20 @@
         <div id="home_bg_img_container">
             <img id="home_bg_img" src="/media/images/home/home_image_1.jpg" stype="width: 100%">
         </div>
-        <h1>Welcome back, <?php echo $_SESSION["username"]; ?>.</h1>
-        <form id="search" action="/pages/search.php" class="action_form">
-            <input type="submit" value="Search" class="action_submit">
-        </form>
-        <form id="add" action="/pages/add.php" class="action_form">
-            <input type="submit" value="Add Entry" class="action_submit">
-        </form>
-        <form id="tags" action="/pages/tags.php" class="action_form">
-            <input type="submit" value="Tags" class="action_submit">
-        </form>
-        <form id="list" action="/pages/list.php" class="list_form">
-            <input type="submit" value="Index" class="action_submit">
-        </form>
+        <div id="main_container">
+            <h1>Welcome back, <?php echo $_SESSION["username"]; ?>.</h1>
+            <form id="search" action="/pages/search.php" class="action_form">
+                <input type="submit" value="Search" class="action_submit">
+            </form>
+            <form id="add" action="/pages/add.php" class="action_form">
+                <input type="submit" value="Add Entry" class="action_submit">
+            </form>
+            <form id="tags" action="/pages/tags.php" class="action_form">
+                <input type="submit" value="Tags" class="action_submit">
+            </form>
+            <form id="list" action="/pages/list.php" class="list_form">
+                <input type="submit" value="Index" class="action_submit">
+            </form>
+        </div>
     </body>
 </html>

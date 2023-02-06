@@ -26,4 +26,5 @@
             <input type="submit" value="Tags">
         </form>
     </body>
+    <script src="/js/header.js"></script>
 </html>

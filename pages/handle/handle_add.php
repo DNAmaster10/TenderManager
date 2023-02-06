@@ -19,22 +19,25 @@
     }
 
     //Add tag check later
+    $tags = "#-#";
     $tag_array = explode("#-#", $_POST["tags"]);
     for ($i = 0; $i < count($tag_array); $i++) {
-        $stmt = $conn->prepare("SELECT tag FROM tags WHERE tag=?");
+        $stmt = $conn->prepare("SELECT COUNT(*) FROM tags WHERE tag=?");
         $stmt->bind_param("s", $tag_array[$i]);
         $stmt->execute();
-        $stmt->bind_result($result);
-        $stmt->fetch();
-        $stmt->close();
-        if (!$result) {
-            error("Tag ".$tag_array[$i]." invalid.");
+        $stmt->bind_result($num_rows);
+        $stmt->fetch(); 
+        if ($num_rows < 1) {
+            error("Invalid tag: ".$tag_array[$i]);
         }
+        $stmt->close();
+        unset($num_rows);
+        $tags .= $tag_array[$i]."#-#";
     }
 
     //Add basics
     $stmt = $conn->prepare("INSERT INTO tendors(uploader, question, answer, tags) VALUES (?,?,?,?)");
-    $stmt->bind_param("ssss", $_SESSION["username"], $_POST["question"], $_POST["answer"], $_POST["tags"]);
+    $stmt->bind_param("ssss", $_SESSION["username"], $_POST["question"], $_POST["answer"], $tags);
     $stmt->execute();
     $id = mysqli_insert_id($conn);
     $stmt->close();

@@ -38,6 +38,7 @@
     }
 
     //Add tag check later
+    $tags = "#-#";
     $tag_array = explode("#-#", $_POST["tags"]);
     for ($i = 0; $i < count($tag_array); $i++) {
         $stmt = $conn->prepare("SELECT COUNT(*) FROM tags WHERE tag=?");
@@ -50,11 +51,12 @@
         }
         $stmt->close();
         unset($num_rows);
+        $tags .= $tag_array[$i] . "#-#";
     }
 
     //Add basics
     $stmt = $conn->prepare("UPDATE tendors SET uploader=?, question=?, answer=?, tags=? WHERE id=?");
-    $stmt->bind_param("ssssi", $_SESSION["username"], $_POST["question"], $_POST["answer"], $_POST["tags"], $id);
+    $stmt->bind_param("ssssi", $_SESSION["username"], $_POST["question"], $_POST["answer"], $tags, $id);
     $stmt->execute();
     $stmt->close();
 

@@ -25,7 +25,9 @@
     $tag_array = explode("#-#", $_GET["tags"]);
     if ($contains_tags) {
         for ($i = 0; $i < count($tag_array); $i++) {
-            $tag_array[$i] = "%".$tag_array[$i]."%";
+            if ($tag_array[$i] != "") {
+                $tag_array[$i] = "%#-#" . $tag_array[$i] . "#-#%";
+            }
         }
     }
 

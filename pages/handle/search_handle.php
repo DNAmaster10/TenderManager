@@ -14,18 +14,16 @@
         $contains_tags = true;
         $tag_array = explode("#-#", $_GET["tag_list"]);
         for ($i = 0; $i < count($tag_array); $i++) {
-            $tag_array[$i] = "%".$tag_array[$i]."%";
+            if ($tag_array[$i] != "") {
+                $tag_array[$i] = "%#-#" . $tag_array[$i] . "#-#%";
+            }
         }
     }
     else {
         $contains_tags = false;
     }
-    if (isset($_GET["search_term"]) && strlen($_GET["search_term"]) > 0) {
-        $contains_term = true;
-    }
-    else {
-        $contains_term = false;
-    }
+    $contains_term = (isset($_GET["search_term"]) && strlen($_GET["search_term"]) > 0);
+
     if (!$contains_term && !$contains_tags) {
         error("No search term or tag set");
     }

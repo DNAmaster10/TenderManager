@@ -166,7 +166,9 @@ function removeTag(tagName) {
 var oldTags = document.getElementById("old_tags").value;
 var oldTagsArray = oldTags.split("#-#");
 for (var i = 0; i < oldTagsArray.length; i++) {
-    addTag(oldTagsArray[i]);
+    if (oldTagsArray[i] != "") {
+        addTag(oldTagsArray[i]);
+    }
 }
 
 var oldRating = document.getElementById("old_rating").value;

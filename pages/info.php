@@ -89,7 +89,7 @@
                 </div>
                 <div id="answer_container">
                     <h3 id="answer_label">Answer: </h3>
-                    <p id="answer_text"><?php echo($answer); ?></p>
+                    <pre id="answer_text"><?php echo($answer); ?></pre>
                 </div>
             </div>
         </div>

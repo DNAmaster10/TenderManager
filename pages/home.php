@@ -30,7 +30,7 @@
                 </div>
                 <div id="tags_form_container" class="action_form_container" onclick="document.forms['add'].submit();">
                     <form id="tags" action="/pages/tags.php" class="action_form">
-                        <p class="action_p">Tags</p>>
+                        <p class="action_p">Tags</p>
                     </form>
                 </div>
                 <div id="list_form_container" class="action_form_container" onclick="document.forms['list'].submit();">

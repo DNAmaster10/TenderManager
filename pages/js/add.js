@@ -79,7 +79,7 @@ function getTags() {
             var tagArray = data.split("#-#");
             var tagList = document.getElementById("tag_list").value;
             for (var i = 0; i < tagArray.length; i++) {
-                if (!(tagArray[i].length < 1) && !(tagArray[i] == "null") && !(tagList.includes(tagArray[i]))) {
+                if (!(tagArray[i].length < 1) && !(tagArray[i] == "null") && !(tagList.includes("#-#" + tagArray[i] + "#-#"))) {
                     var element = `
                     <button type='button' id='`+tagArray[i]+`_tag' class='tag_select_button' value='` + tagArray[i] + `' onclick='addTag(this.value)'>` + tagArray[i] + `</button>
                     `;
@@ -125,7 +125,7 @@ function addTag(tag) {
     var tagValue = tag;
     var tagArray = document.getElementById("tag_list").value;
     if (tagArray == "") {
-        var returnString = tagValue;
+        var returnString = "#-#" + tagValue + "#-#";
         var returnArray = [tagValue];
     }
     else {
@@ -137,7 +137,7 @@ function addTag(tag) {
             }
         }
         returnArray.push(tagValue);
-        var returnString = returnArray.join("#-#");
+        var returnString = "#-#" + returnArray.join("#-#") + "#-#";
     }
     document.getElementById("tag_list").value = returnString;
     rootElement = document.getElementById("added_tag_button_container");
@@ -166,7 +166,7 @@ function removeTag(tagName) {
             returnArray.push(tagArray[i]);
         }
     }
-    document.getElementById("tag_list").value = returnArray.join("#-#");
+    document.getElementById("tag_list").value = "#-#" + returnArray.join("#-#") + "#-#";
     rootElement = document.getElementById("added_tag_button_container");
     rootElement.innerHTML = "";
     for (var i = 0; i < returnArray.length; i++) {

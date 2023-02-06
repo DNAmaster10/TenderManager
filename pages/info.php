@@ -80,7 +80,9 @@
                         <?php
                             $tag_array = explode("#-#", $tags);
                             for ($i = 0; $i < count($tag_array); $i++) {
-                                echo ("<p id='".$tag_array[$i]."_tag' class='tag'>".$tag_array[$i]."</p>");
+                                if ($tag_array[$i] != "") {
+                                    echo ("<p id='" . $tag_array[$i] . "_tag' class='tag'>" . $tag_array[$i] . "</p>");
+                                }
                             }
                         ?>
                     </div>

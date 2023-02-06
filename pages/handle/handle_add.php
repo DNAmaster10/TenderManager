@@ -22,17 +22,19 @@
     $tags = "#-#";
     $tag_array = explode("#-#", $_POST["tags"]);
     for ($i = 0; $i < count($tag_array); $i++) {
-        $stmt = $conn->prepare("SELECT COUNT(*) FROM tags WHERE tag=?");
-        $stmt->bind_param("s", $tag_array[$i]);
-        $stmt->execute();
-        $stmt->bind_result($num_rows);
-        $stmt->fetch(); 
-        if ($num_rows < 1) {
-            error("Invalid tag: ".$tag_array[$i]);
+        if (!$tag_array[$i] == "") {
+            $stmt = $conn->prepare("SELECT COUNT(*) FROM tags WHERE tag=?");
+            $stmt->bind_param("s", $tag_array[$i]);
+            $stmt->execute();
+            $stmt->bind_result($num_rows);
+            $stmt->fetch();
+            if ($num_rows < 1) {
+                error("Invalid tag: " . $tag_array[$i]);
+            }
+            $stmt->close();
+            unset($num_rows);
+            $tags .= $tag_array[$i] . "#-#";
         }
-        $stmt->close();
-        unset($num_rows);
-        $tags .= $tag_array[$i]."#-#";
     }
 
     //Add basics

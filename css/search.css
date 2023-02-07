@@ -3,51 +3,66 @@ body {
     padding: 0px;
 }
 #main_container {
-    padding: 10px;
     margin: 10px;
+    padding: 10px;
+    text-align:  center;
 }
-#edit_form {
-    margin-left: 96%;
-}
-.action_button {
+#search_box {
     border: 2px solid #ccc;
-    border-radius: 10px;
-    background-color: #f8f8f8;
-    font-size: 20px;
-    display: inline;
-}
-.action_button:hover {
-    background-color: lightgray;
-}
-#info_box {
-    float: left;
-    border: 2px solid #ccc;
-    width: 30%;
     border-radius: 10px;
     padding: 10px;
-    text-align: left;
-}
-.tag {
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    background-color: #f8f8f8;
-    font-size: 14px;
-    width: min-content;
-    padding: 1px;
-    display: inline;
-}
-#answer_container {
     text-align: center;
 }
-#question {
-    margin-left: 1%;
+#search_input {
+    margin-bottom: 10px;
 }
-#back_button {
-    float: left;
+input {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f8f8f8;
 }
-#edit_button {
-    float: right;
+input:hover {
+    background-color: lightgray;
 }
-#action_button_container {
-    margin-bottom: 50px;
+input:focus {
+    outline: none;
+}
+#tags {
+    margin-top: 10px;
+}
+.tag_select_button {
+    border: 1px solid black;
+    font-size: 14px;
+    border-radius: 10px;
+}
+#added_tag_container {
+    border: 2px solid #ccc;
+    padding: 3px;
+    margin-bottom: 10px;
+    width: 30.4%;
+    margin-left: 35%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+#tag_container {
+    margin-top: 5px;
+}
+.result_container {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    text-align: left;
+    margin: 1px;
+}
+.result_p {
+    margin: 2px;
+    color: blue;
+    text-decoration: underline;
+}
+.rating_p {
+    margin: 2px;
+}
+mark {
+    background-color: lime;
+    border-radius: 7px;
+    color: purple;
 }

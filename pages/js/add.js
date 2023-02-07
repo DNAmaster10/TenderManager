@@ -63,6 +63,7 @@ function uploadInfo() {
                 document.getElementById("tag_list").value = "#-#";
                 document.getElementById("added_tag_button_container").innerHTML = "";
                 updateStars("1");
+                resetTextArea();
             }
         }
     });
@@ -102,9 +103,11 @@ function addTagsToList(data) {
     }
 }
 const tx = document.getElementsByTagName("textarea");
-for (let i = 0; i < tx.length; i++) {
-  tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
-  tx[i].addEventListener("input", OnInput, false);
+function resetTextArea() {
+    for (let i = 0; i < tx.length; i++) {
+        tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+        tx[i].addEventListener("input", OnInput, false);
+    }
 }
 
 function OnInput() {
@@ -182,3 +185,5 @@ document.getElementById("year_input").disabled = false;
 document.getElementById("answer_input").disabled = false;
 document.getElementById("tag_input").disabled = false;
 document.getElementById("additional_notes_input").disabled = false;
+
+resetTextArea();

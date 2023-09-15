@@ -20,8 +20,9 @@
 				<button type="button" id="index_button" onclick="goIndex()">Index</button>
 			</div>
 			<div id="page_container">
-				<iframe src="/pages/welcome.php"></iframe>
+				<iframe src="/pages/welcome.php" id="main_frame"></iframe>
 			</div>
 		</div>
     </body>
+	<script src="/pages/js/home.js"></script>
 </html>

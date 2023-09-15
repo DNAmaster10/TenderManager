@@ -7,7 +7,7 @@
     </head>
     <body>
         <form action="/pages/login.php">
-            <input type="submit" value="Login">
+            <input type="submit" id="login_button" value="Login">
         </form>
     </body>
 </html>
